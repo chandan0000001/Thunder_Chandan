@@ -4,7 +4,6 @@ using namespace std;
 int main(){
     string code;
     getline(cin,code);
-
     // Now print the element
     int open  = code.find('(');
     int close = code.rfind(')');
@@ -15,12 +14,10 @@ int main(){
     }
     else{
         int index = 0, a = 0, b = 0;
-
         while((inside[index]!='+')&&(inside[index]!='-')&&(inside[index]!='*')&&(inside[index]!='/')){
             a = a*10 + (inside[index]-'0');
             index++;
         }
-
         char op = inside[index];
         index++;
 
@@ -28,7 +25,6 @@ int main(){
             b = b*10 + (inside[index]-'0');
             index++;
         }
-
         if(op=='+'){
             cout<<a+b<<endl;
         }
@@ -46,6 +42,5 @@ int main(){
     return 0;
 
 }
-
-    
-// console.log("hello Ji");
+ 
+// console.log("hello  Chandan");
