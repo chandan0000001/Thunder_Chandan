@@ -30,8 +30,8 @@
 // console.log(10**4);
 
 
-let a = 10;
-let b = 20;
+// let a = 10;
+// let b = 20;
 
 // a = a+b;
 // a+=b;
@@ -139,4 +139,140 @@ let b = 20;
 // console.log(false||false);
 
 
-console.log(false || false);
+// console.log(false || false);
+
+
+
+// var Old method 
+// console.log(a);
+// var a = 10;
+// console.log(a);
+
+// Moderm method 
+// console.log(a);
+// let a = 10;
+
+
+
+// if(true){
+//     var a = 20;
+// }
+// console.log(a)  // we can acess here a value out of  scope
+
+
+
+//operatoor 
+//Arithmatic 
+// console.log(2+3);
+// console.log(2+3);
+// console.log(2/3);
+// console.log(2*3);
+// console.log(2%3);
+// console.log(2**3); // 2 to the [power 3 ]   
+
+
+// assignment operator 
+// let a = 10;
+// let b = 20;
+// a = a+b ; a+=b 
+// console.log(a);
+// same as per the + - / * etc  
+
+
+// postincrement 
+// a = 10 ;
+// //print a then increse the value 
+// console.log(a++); // it print 10 
+// //now a is 11 
+
+// //ppost increment 
+// // increse the value then print the value 
+// console.log(++a); //so now it print 12 bcz a is already 12
+
+
+
+
+
+
+
+
+
+
+
+// //comparioson operator 
+// console.log(10>3);
+// console.log(10>=3);
+// console.log(10<3);
+// console.log(10<=3);
+// console.log(10==3);
+
+
+//gaddhe coder ye karrte he isko sikhe apna time waste karrte he 
+// console.log("10"==10); //true here the type conversion was occured 
+
+
+// console.log("Chandan"=={name : "Chandan"})
+
+
+
+
+
+// // type conversion 
+// let age = Number("Chandan");
+// console.log(typeof(age));
+// console.log(age);
+// //Throws NaN  > Not  a Number 
+
+
+
+//Calucautaor 
+//user is dumb 
+// let first = "29" ; let second = "24";
+// console.log(first+second);
+// console.log(Number(first)+Number(second));
+
+// //there is no type converter 
+//  console.log(30+'7'); 
+//  //Number converter 
+//  console.log(30+Number('7')); 
+
+// console.log(null==undefined);  // It return TRUE 
+// //NULL is loosly equal to undefined 
+// console.log(null==0);
+// console.log(null==false);
+// console.log(null==null);
+
+
+
+// console.log(null>=0);
+// console.log(null<=0);
+// console.log(null<0);
+// console.log(null>0);
+
+
+// let ab = 10+23+234/2*23-2;
+//use braacket for better 
+// let ab = ((10+[23+234])/(2*23)-2);
+// console.log(ab);
+
+
+// // === strictly equal 
+// console.log(10===10);
+// console.log('10'==10);
+
+
+//operator 
+// console.log(true&&true);
+// console.log(true&&false);
+console.log(false&&true); //fasle ko dekha iseeshi returnn karoo 
+
+// console.log(false&&false);
+
+// console.log(true || true);
+// console.log(true || false);
+// console.log(false || true);
+// console.log(false || false);
+
+
+// console.log(true && "chandan");
+// console.log(false && "chandan");
