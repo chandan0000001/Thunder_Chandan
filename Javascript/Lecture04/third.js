@@ -76,3 +76,116 @@
 // String:
 
 
+// //Number 
+// let num = 10.224932;
+// console.log(num.toFixed(2));
+// let ans = num.toFixed(2);
+// console.log(typeof(ans)); // It is a string 
+// console.log(num); //it doesnot chahge the orginal value of NUM 
+
+//Number 
+// let num = 10.224932;
+// console.log(num.toPrecision(2));
+// let ans = num.toPrecision(2);
+// console.log(typeof(ans)); // It is a string 
+// console.log(num); //it doesnot chahge the orginal value of NUM 
+
+
+// let a = Number(10);
+// console.log(typeof(a));
+
+
+// console.log(10/0);
+// console.log(-10/0);
+// console.log(0/0);
+
+
+
+
+
+//dont create number like below it create a object 
+// new keyWord -> it is a object creation 
+// let num1 = new Number(10);
+// let num2 = new Number(20);
+// console.log(typeof(num1));
+// console.log(num1);
+// console.log(typeof(num2));
+// console.log(num2);
+// console.log(num1 == num2 );  //It return false 
+
+
+
+
+//new Object Math 
+//
+
+
+// let a  = -23;
+// a = a*(-1);
+// console.log(a);
+
+
+// console.log(Math.abs(-23));
+// console.log(Math.LN10); //Ln 10 
+
+// console.log(Math.LOG2E) //Log 2 base 2
+
+
+
+
+// console.log(Math.floor(2.353))
+// console.log(Math.floor(-2.353))
+// console.log(Math.ceil(2.353))
+
+
+// console.log(Math.random()); // It create a random value from [0,1)
+
+
+
+// console.log(Math.random()*10);// It start now  0 to 10 
+
+
+
+// console.log(Math.floor(Math.random()*10));// It start now  0 to 10 
+// console.log(Math.ceil(Math.random()*10));// It start now  0 to 10 
+
+
+
+
+// from 1  to 10 
+//  console.log(Math.floor(Math.random()*10+1));// It start now  0 to 10 
+
+
+
+
+// from 1 to 6  
+//there are  6 unique digit   so 
+// console.log(Math.floor(Math.random()*6+1));
+
+
+
+
+
+// formula
+// Mathfloor(Math.random()*(TotalNuumberGenerated + shift))
+// TotalNuumberGenerated = (max-min+1)   || Shift  = min 
+// Mathfloor(Math.random()*(max-min+1)+min)
+
+
+
+
+
+// 37 to 48 
+// console.log(Math.floor(Math.random()*(48-37+1)+37))
+
+
+
+
+
+
+
+// majje karrne he   OTP generate kara bina bakchodi ke 
+// print from ( 10000 - 32923483)  random value
+// console.log(Math.floor(Math.random()*(32923483-10000)+10000) );
+
+
