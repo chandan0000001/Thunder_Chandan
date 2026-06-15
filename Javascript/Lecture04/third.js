@@ -190,7 +190,8 @@
 
 //but we did not use this fuxk things to generate the Otp 
 // here we use Crypto Library 
+// console.log(Math.ceil(Math.random()*(9999-1111)+1111));
 
-
-// let num = Number(0000);
-console.log(Math.celi(Math.random()*(9999-1111)+1111) );
+// 0000 is not allowed 
+// /print random 0000 - 9999
+console.log(Math.floor(Math.random() * (9999-999)) + 1000);

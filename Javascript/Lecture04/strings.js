@@ -63,5 +63,72 @@
 
 
 
+// let str1 = "Channdan";
+// let num = 1;
+// let str2 = `chandan ${num}`;
+// console.log(str1 ,str2);
+// let num = 1;
+// let str2 = `chandan ${num} 
+// marr to nahi gayee ?? so jao apni Assema se thoda milla karo  `;
+// console.log(str2);
 
 
+
+
+// let str = "Hello Ji";
+// // console.log(str.length);
+
+
+
+// for (let i = 0 ; i<=str.length ;i++){
+//     console.log(str[i]);
+// }
+
+
+
+// let str1 = `Hello` ; let str2 =  `Chaaja tu`;
+// console.log(str1+ " "+str2 )
+
+
+// let str = "chAnDan KmmAr ";
+// let ans = (str.toUpperCase());
+// console.log(ans);
+// let ansx = (str.toLowerCase());
+// console.log(ansx);
+// console.log(str);
+// console.log(str.includes(`w`));
+// console.log(str.includes(`H`));
+
+
+
+
+// //Sub String 
+// let str = "Chandan is a good Boy chandan";
+// console.log(str.indexOf(`Chandn`));  // not preseent -1 
+// console.log(str.indexOf(`Chandan`));
+// console.log(str.indexOf(`Boy`));
+// console.log(str.lastIndexOf(`chandan`)); //count the second index or last index of chandan because there are two chandan presesnt 
+
+
+
+
+
+
+// let str = "Chandan is a good Boy chandan";
+// console.log(str.slice(2.8));
+// console.log(str.slice(-6));
+// console.log(str.slice(8));
+
+
+
+
+// function add(num1 , num2){
+//     return num1+num2;
+// }
+// console.log(add(3,5));
+
+
+
+
+
+let str = "Chandan is a good Boy chandan";
