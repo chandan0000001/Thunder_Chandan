@@ -131,4 +131,33 @@
 
 
 
-let str = "Chandan is a good Boy chandan";
+// let str = "Chandan is a good Boy chandan";
+// console.log(str.substring(-2)); //ye negative nahi leta 
+// console.log(str.slice(-2)) ; //ye pakda last ke 2 ko an and ye negative value ko nahi leta 
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let str = "Chandan is a good Boy chandan good";
+// console.log(str.replace("good" , "bad"))
+// console.log(str.replaceAll("good" , "bad"))
+
+
+// let a = "   Chandan Kumar";
+// console.log(a);
+// console.log(a.trim())
+
+
+
+let data = " Chandan,Assema,dipsa,rohit  ";
+console.log(data.trim());
+console.log(data.split(","));
