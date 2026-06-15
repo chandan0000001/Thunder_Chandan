@@ -38,15 +38,6 @@
 
 // console.log(data.split(' '))
 
-
-
-
-
-
-
-
-
-
 // console.log(str.lastIndexOf("Negi"));
 // console.log(str.includes('oht'));
 
@@ -61,3 +52,16 @@
 
 
 // console.log(add(2,3));
+
+
+
+
+
+
+
+
+
+
+
+
+

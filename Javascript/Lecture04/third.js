@@ -188,4 +188,9 @@
 // print from ( 10000 - 32923483)  random value
 // console.log(Math.floor(Math.random()*(32923483-10000)+10000) );
 
+//but we did not use this fuxk things to generate the Otp 
+// here we use Crypto Library 
 
+
+// let num = Number(0000);
+console.log(Math.celi(Math.random()*(9999-1111)+1111) );
