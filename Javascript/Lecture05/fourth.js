@@ -57,3 +57,44 @@
 // let str = "Rohit";
 
 // console.log(str+10);
+
+
+
+// console.log(180+240+200)
+
+// for (let i =0 ;i<5;i++){
+//     console.log(i);
+// }
+
+// let str = "";
+// for(let i =1;i<6;i++){
+//     str = str + '*';
+// }
+// console.log(str);
+
+
+
+
+
+
+// let str = "";
+// for(let i =1;i<6;i++){
+//     str = str + '*';
+// }
+// for (let i = 0 ;i <6 ;i++)
+//      console.log(str);
+
+
+
+// 1 2 3 4 5
+// 1 2 3 4 5
+// 1 2 3 4 5
+// 1 2 3 4 5
+
+for(let j = 0 ; j<5 ;j++){
+    let str = "";
+for (let i = 1 ;i <= 5;i++){
+   str = str+i+" ";
+}
+console.log(str);
+}

@@ -5,6 +5,15 @@
 // }
 
 
-for(let i=97;i<=122;i++){
-    console.log(String.fromCharCode(i));
-}
+// for(let i=97;i<=122;i++){
+//     console.log(String.fromCharCode(i));
+// }
+
+
+
+// for(let i = 55 ; i<90 ; i++){
+//     console.log(String.fromCharCode(i));
+// }
+
+
+// console.log(String.fromCharCode('🤣'));
