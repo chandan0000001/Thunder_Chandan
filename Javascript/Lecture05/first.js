@@ -19,8 +19,31 @@
 //     console.log("Hello World")
 // }
 
-for(let i=200;i<300;i++){
-    console.log("Hello World")
-}
+// for(let i=200;i<300;i++){
+//     console.log("Hello World")
+// }
 
 // 101 time
+
+
+
+// console.log("Hello Chandan");
+// console.log("Hello Chandan");
+// console.log("Hello Chandan");
+// console.log("Hello Chandan");
+// console.log("Hello Chandan");
+// console.log("Hello Chandan");
+// console.log("Hello Chandan");
+// console.log("Hello Chandan");
+// console.log("Hello Chandan");
+// console.log("Hello Chandan");
+// console.log("Hello Chandan");
+
+
+
+// for (let i =0 ;i<=2000;i++){
+//     console.log("hello");
+// }
+
+
+

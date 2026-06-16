@@ -67,5 +67,33 @@
 // }
 
 
+// //print 1 to 10 
+// for(let i = 1 ; i<=10 ; i++){
+//     console.log(i);
+// }
+
+
+
+
+
+// // print from 10 to 1 
+// for (let i = 10 ; i > 0 ; i--){
+//     console.log(i);
+// }
+
+
+
+// print even num 10 to 800
+// for (let i = 10 ;i <= 800 ; i=i+2){
+//     console.log(i);
+// }
+
+
+// //17 table 
+// for(let i = 17 ; i<= 170 ;i=i+17){
+//     console.log(i);
+// }
+
+
 
 
