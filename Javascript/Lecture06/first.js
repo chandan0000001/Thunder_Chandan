@@ -9,7 +9,7 @@ let marks5 = 70;
 
 // 5 variable create : 100 students ke marks
 
-let marks = [30,20,11,80,70];
+// let marks = [30,20,11,80,70];
 
 // console.log(marks);
 // find the number of element in the array
@@ -24,3 +24,14 @@ let marks = [30,20,11,80,70];
 // for(let i=0;i<marks.length;i++){
 //     console.log(marks[i]);
 // }
+
+
+let marks = [30,20,11,80,70];
+console.log(marks);
+console.log(marks.length);
+console.log(marks[3]);
+
+//pt all elements
+for(let i =0 ; i<marks.length ;i++){
+    console.log(marks[i]);
+}

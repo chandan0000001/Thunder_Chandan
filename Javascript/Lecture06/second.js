@@ -78,7 +78,7 @@
 // use case mein hum aayenge...
 
 
-let marks = [10,20,30,40,50,60,70];
+// let marks = [10,20,30,40,50,60,70];
 
 // starting element: splice: Delete, insert karane ke liye kar sakte hai
 // if I have to delete 30 from the array
@@ -89,4 +89,91 @@ let marks = [10,20,30,40,50,60,70];
 // if I have to inser 2 element from second index: 41 , 91
 // marks.splice(2,0,41,91);
 // console.log(marks)
+
+
+
+
+// It store the heterogenous type of data: It can store anytype of data inside it
+// let user = [10,232,434.34,"Chandan",true];
+
+// console.log(user);
+// user[1] = "chandan";
+// //push(Insert element at the end ) and pop delete element at the end 
+// console.log(user);
+
+
+// let num = [10,20,30254,64,32,5];
+// //push(Insert element at the end ) and pop delete element at the end 
+// num.push(283);
+// console.log(num);
+// num.pop();
+// console.log(num);
+
+
+// let num = [10,20,30254,64,32,5];
+//delete start elemenrt an insert at start 
+//unshift insert lelement at the araay
+// num.unshift(20);
+// // console.log(num);
+// // num.unshift(23,40);
+// console.log(num);
+
+// //shift for delete 
+// // num.shift();
+
+// console.log(num);
+
+
+// const arr = [39,32,4,23,45,56];
+// console.log(typeof(arr));
+
+
+
+
+
+
+
+
+
+//For of loop we use too much 
+
+// let num = [13,24,53,64,2,546,6];
+// for(let x of num){
+//     console.log(x);
+// }
+
+
+
+
+
+
+
+
+
+
+// let marks = [10,20,0,4,23,43,35,546,76,3,39];
+// // const a = marks.slice(1,3);
+// // console.log(a);
+// // slice doesnt change the original array, it just create a new copy of the particular portion and give it back
+// console.log(marks);
+// const b = marks.splice(2,4,89,90,9);
+// console.log(b);
+// console.log(marks); 
+// //cplice return a array from a particular index  and change the orginal array  and     that " 80 90 9 "  also be added that plce
+
+
+
+
+
+// let marks = [10,20,30,40,50,60,70];
+// // //delete 30 from array
+// // marks.splice(2,1); //second index pe jao 1 element ko delete karo 
+// // console.log(marks);
+
+// //If i have to inster 2 elements from secondd index 41 , 91
+
+// marks.splice(2,0,41,91); //go second index 0 element delete and then add 41 and 91
+// console.log(marks);
+
+
 
