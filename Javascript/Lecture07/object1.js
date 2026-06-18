@@ -139,3 +139,152 @@
 
 
 
+
+// //Objects
+
+// const user = {
+//     name:"Chandan",
+//     age:20,
+//     amount: 3244,
+//     state:"Odisha",
+//     num:871248142
+// }
+// console.log(user);
+
+// console.log(user.name);
+// //above and below are same 
+// console.log(user["name"]);
+
+
+
+//from backend data will comes like below  array ke andar object 
+// const users = [
+//     {
+//             name:"Assema",
+//             age:19,
+//             amount: 33244,
+//             state:"Odisha",
+//             num:871248142
+//         },
+//         {
+//             name:"Chandan",
+//             age:20,
+//             amount: 35244,
+//             state:"Odisha",
+//             num:871248142
+//         },
+//         {
+//             name:"Damyanti",
+//             age:20,
+//             amount: 324423,
+//             state:"Odisha",
+//             num:871248142
+//         },  {
+//             name:"Rohit",
+//             age:20,
+//             amount: 324,
+//             state:"Odisha",
+//             num:871248142
+//         },
+//         {
+//             name:"Mohit",
+//             age:20,
+//             amount: 3244,
+//             state:"Odisha",
+//             num:871248142
+//         },
+//         {
+//             name:"Chandanx",
+//             age:20,
+//             amount: 3244,
+//             state:"Odisha",
+//             num:871248142
+//         }
+// ]
+
+// console.log(users[0].name);
+
+// function Display(food){
+//     console.log(food.name);
+//     console.log(food.price);
+//     console.log(food.rating);
+//     console.log(food.description);
+//     console.log(food.image);
+// }
+
+
+// const obj = {
+//     name:"Wednesday Bucket",
+//     price: 239,
+//     rating:4.1,
+//     description: "Enjoy this food",
+//     image: "https: 123"
+// }
+// Display(obj);
+
+
+
+
+
+
+
+// function Display(userx){
+//         console.log(userx.name);
+//         console.log(userx.age);
+//         console.log(userx.amount);
+//         console.log(userx.state);
+//         console.log(userx.num);
+//     }
+//     //backend se data hamesa array ke sath ata he 
+// const users = [
+//         {
+//                 name:"Assema",
+//                 age:19,
+//                 amount: 33244,
+//                 state:"Odisha",
+//                 num:871248142
+//             },
+//             {
+//                 name:"Chandan",
+//                 age:20,
+//                 amount: 35244,
+//                 state:"Odisha",
+//                 num:871248142
+//             },
+//             {
+//                 name:"Damyanti",
+//                 age:20,
+//                 amount: 324423,
+//                 state:"Odisha",
+//                 num:871248142
+//             },  {
+//                 name:"Rohit",
+//                 age:20,
+//                 amount: 324,
+//                 state:"Odisha",
+//                 num:871248142
+//             },
+//             {
+//                 name:"Mohit",
+//                 age:20,
+//                 amount: 3244,
+//                 state:"Odisha",
+//                 num:871248142
+//             },
+//             {
+//                 name:"Chandanx",
+//                 age:20,
+//                 amount: 3244,
+//                 state:"Odisha",
+//                 num:871248142
+//             }
+//     ]
+//     //
+//     //for of loop  
+// for(const x of users){ //here const itirate all data in the array {BUT HOW CONST HANDLE IT }
+// //changing the adress 
+//     Display(x);
+// }
+
+
+//

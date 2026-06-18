@@ -36,3 +36,45 @@
 // Hur ek ko string mein convert kar dunga, uske baad sort karunga....
 // ["10","Rohit","true","98","rohan","null"]
 // console.log(arr);
+
+
+// const name = ["Chandan","Mohon", "Rohit","Dipsa" ,"Damyanati" , "chandan"];
+// //it follows ascaii value while sorting
+// console.log(name);
+// name.sort();
+// console.log(name)
+// name.reverse();
+// console.log(name)
+
+
+
+// let num = [10,20,3,4,5,5,2,4,5,2,24,5,562,3,2]
+// num.sort();
+// //it doenot consider them as a string they consider as a string it compare like  from 101 -> "1"  "0"   "1"
+// console.log(num);
+// //if we want our particular result then we use below arrow funcgion 
+
+// num.sort((a,b)=>a-b);
+// // a = 10 
+// //b = 20
+// //10-20 = -10  // if ans is negative then a will be first before b 
+// //  if ans is positive then b will be first before a 
+// console.log(num);
+
+// //for decending oder
+// num.sort((a,b)=>b-a);
+// console.log(num);
+
+
+//But why it takes string ?  
+//because arry in contain all types of value (num , bool , ob etc...)  so for internal optimization they treated as a string they apply sort or any kind of opration 
+
+
+
+
+
+
+
+
+
+
