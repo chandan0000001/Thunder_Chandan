@@ -1,27 +1,58 @@
 // zomato blinkit merger:
 
 
+// function zomatoRestaurant(){
+//     console.log("Restaurant is preparing the order");
+// }
+
+// function blinkitWarehouse(){
+//     console.log("Packing the orde for user");
+// }
+
+
+
+// function payment(amount, Callback){
+//     console.log(amount, "Payment is happenning");
+//     console.log("Payment is done");
+//     Callback();
+
+//     // GST
+//     // Commision payment calculate
+// }
+
+
+// payment(500,zomatoRestaurant);
+// payment(1000,blinkitWarehouse);
+// // payment(2000,temple);
+
+
+
+
+
+
+
+function temple(){
+    console.log("Scam Hogaye lalala");
+}
+
 function zomatoRestaurant(){
-    console.log("Restaurant is preparing the order");
+    console.log("Resturant is preparing the oder ");
 }
 
 function blinkitWarehouse(){
-    console.log("Packing the orde for user");
+    console.log("Packing the user ");
 }
 
-
-
-function payment(amount, Callback){
-    console.log(amount, "Payment is happenning");
+function Payment(amount,callback){
+    console.log(amount, "Payment is Happening ")
     console.log("Payment is done");
-    Callback();
-
-    // GST
-    // Commision payment calculate
+    //call to returant placed oder 
+    // zomatoResturant();
+    callback();
+    //GST
+    //COMMISSION PAYMENT GATEWAY
 }
 
-
-payment(500,zomatoRestaurant);
-payment(1000,blinkitWarehouse);
-// payment(2000,temple);
-
+Payment(500,zomatoRestaurant);
+Payment(1000,blinkitWarehouse);
+Payment(200,temple)

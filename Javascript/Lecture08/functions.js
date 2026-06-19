@@ -128,6 +128,105 @@
 
 
 
+// function addNumber(x,z){
+//     console.log(`Your sum is ${a+b}`)
+// }
+//  function retaddNumber(c,v){
+//     return c+v;
+// }
+
+// let a = 3;
+// let b = 2;
+// addNumber(a,b)
+// const answer = retaddNumber(a,b)
+// console.log(answer)
+
+//  function retaddNumber(c,v,d){
+//         return c+v+d;
+//     }
+// console.log(retaddNumber(4,5,6));
+// // 15
+// console.log(retaddNumber(4,5)); // here another number taken as undefined 
+// NaN
+
+
+// //For optimal 
+// //use spred operator we need to brek number by number 
+// //arr = [2,4,5,6,7,43,3,2,4]
+// function add (...arr){
+//     let sum =0;
+//     for (let x of arr){
+//         sum= sum + x;
+//     }
+//     return sum;
+// }
+// console.log(add(23,34,5256,5672,34,13235,563457,3562,6,3));
 
 
 
+
+
+
+//IMPORTANT 
+// let arr  =[12,2345,346,36573,5,3456];
+// // arr exist karta he so khud ko kholyega and arr2 pe chalajaygega arr se  ye he spread operator 
+// const arr2 = [...arr];
+// console.log(arr2); //[ 12, 2345, 346, 36573, 5, 3456 ]
+
+
+
+
+// // let arr  =[12,2345,346,36573,5,3456];
+// // //rest operator 
+// // //third exist nahi karta yaha pe so baki jo element bacheyenge first and second ko chodd ke ho sab third pe ayenge 
+// // const [first,seccond,...third] = arr ;
+// // console.log(first,seccond,third);  //12 2345 [ 346, 36573, 5, 3456 ]
+
+
+
+
+
+
+// //Second function 
+// const greet = function(){
+//     console.log("Hello");
+// }
+// greet();
+
+
+
+
+//Arrow Functions (ES6 - The Modern Way)    ()=>{ }
+// const add = (a,b)=> {
+//     return a+b;
+// }
+// console.log(add(23,24));
+
+// //Here mul hold the function 
+// const mul = (a,b)=> {
+//     return a*b;
+// }
+// // here mulx hold the function 
+// const mulx = (x,y)=> x*y;
+
+// console.log(mul(32,43));
+// console.log(mulx(234,11));
+
+
+
+
+//determine the square
+// // const num = (a)=> a*a; //We can write below type 
+// const num = a=> a*a;
+// console.log(num(5,9))
+
+
+
+const user = ()=> {
+    return {
+        name:"Chandan",
+        age : 23,
+    }
+}
+console.log(user());
+console.log(typeof(user()));
