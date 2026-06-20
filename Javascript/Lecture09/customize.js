@@ -22,7 +22,7 @@
 //     }
 // }
 
-const arr = [5,10,20,30,11,8,15];
+// const arr = [5,10,20,30,11,8,15];
 
 
 
@@ -48,3 +48,43 @@ const arr = [5,10,20,30,11,8,15];
 // console.log(arr);
 
 
+
+// const arr = [10,0,33,20,40,250];
+// // arr.sort();
+// // console.log(arr);
+
+// //create sorting function 
+// //Bubble sort 
+// for(let i=0 ;i<arr.length;i++){
+//     for(let j=0 ; j<arr.length;j++){
+//         if(arr[j]>arr[j+1]){
+//             let temp = arr[j];
+//             arr[j]= arr[j+1];
+//             arr[j+1]=temp;
+//         }
+//     }
+// }
+
+// console.log(arr);
+
+
+
+
+
+const arr = [10,0,33,20,40,250];
+//this is my coustumize function 
+arr.sorrting =  ()=> {
+    for(let i=0 ;i<arr.length;i++){
+            for(let j=0 ; j<arr.length;j++){
+                if(arr[j]>arr[j+1]){
+                    let temp = arr[j];
+                    arr[j]= arr[j+1];
+                    arr[j+1]=temp;
+                }
+            }
+        }
+}
+
+arr.sorrting();
+console.log(arr);
+//[ 0, 10, 20, 33, 40, 250, sorrting: [Function (anonymous)] ]
