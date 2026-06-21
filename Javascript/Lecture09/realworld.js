@@ -1,7 +1,13 @@
 const products = [
   // Electronics
-  { id: 1, name: "Laptop", category: "Electronics", price: 1200, inStock: true },
-  { id: 2, name: "Headphones", category: "Electronics", price: 200, inStock: true },
+  { id: 1, name: "Laptop",
+     category: "Electronics", 
+     price: 1200, 
+     inStock: true },
+  { id: 2, name: "Headphones", 
+    category: "Electronics",
+     price: 200,
+      inStock: true },
   { id: 3, name: "Smartphone", category: "Electronics", price: 800, inStock: false },
   { id: 4, name: "Monitor", category: "Electronics", price: 300, inStock: true },
   { id: 5, name: "Keyboard", category: "Electronics", price: 75, inStock: true },
@@ -32,12 +38,27 @@ const products = [
   { id: 20, name: "Artisan Bread", category: "Groceries", price: 8, inStock: true }
 ];
 
-// goods =  { id: 1, name: "Laptop", category: "Electronics", price: 1200, inStock: true },
+// // goods =  { id: 1, name: "Laptop", category: "Electronics", price: 1200, inStock: true },
 
 
-const pro = products.filter((goods)=> goods.inStock).map((goods)=> ({name:goods.name, category: goods.category, price:goods.price}));
-// 20 --> 15 
+// const pro = products.filter((goods)=> goods.inStock).map((goods)=> ({name:goods.name, category: goods.category, price:goods.price}));
+// // 20 --> 15 
 
 
 
-console.log(pro);
+// console.log(pro);
+
+
+// const prod = products.filter((goods)=> goods.price>100);
+// const prod = products.filter((goods)=> goods.inStock);
+// console.log(prod);
+
+
+// we want to show name category price with availablle oon stock 
+ const pro = products.filter((goods)=> goods.inStock);
+const ans =pro.map((goods)=> ({
+  name:goods.name,
+  category:goods.category,
+  price:goods.price
+}))
+console.log(ans);

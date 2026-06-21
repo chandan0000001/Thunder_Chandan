@@ -84,3 +84,6 @@ Array.prototype.forLoop = function(x){
 arr.forLoop((num,index,a)=>{
     console.log(num,index,a);
 });
+
+
+
