@@ -6,3 +6,4 @@ const obj = {
         pincode: 23321
     }
 }
+
