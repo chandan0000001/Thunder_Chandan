@@ -1,3 +1,5 @@
+// const { createElement } = require("react");
+
 const users = [
   {
     name: "Aarav Sharma",
@@ -52,46 +54,60 @@ const users = [
 ];
 
 
-const root = document.getElementById("root");
-
-
-// use any loops
-// people: {
-//     name: "Isha Agarwal",
-//     age: 22,
-//     photo: "https://randomuser.me/api/portraits/women/10.jpg"
-//   }
-
 // <div>
-//    <img src="https://randomuser.me/api/portraits/women/10.jpg">
-//    <h2>Name: Isha Agrwal</h2>
-//    <p>Age: 22</p>
-// </div>
+  //use any kind of loop 
+// x : {
+  // name: "Aarav Sharma",
+  // age: 24,
+  // photo: "https://randomuser.me/api/portraits/men/1.jpg"
+// }
+//</div> 
 
+
+
+
+
+// const root = document.getElementById('root');
+// users.forEach((x)=>{
+//   const name = document.createElement('h2')
+//   name.textContent = x.name;
+//   const age = document.createElement('p');
+//   age.textContent = `Age: ${x.age}`;
+
+//   const imgx = document.createElement('img');
+//   imgx.src = x.photo;
+
+
+// const card = document.createElement('div');
+// card.append(imgx,name,age);
+
+// //put above card in troot ellement 
+
+// root.append(card);
+// })
+
+
+
+//for more optimization 
 const arr = [];
+const root = document.getElementById('root');
+users.forEach((x)=>{
+  const name = document.createElement('h2')
+  name.textContent = x.name;
+  const age = document.createElement('p');
+  age.textContent = `Age: ${x.age}`;
 
-users.forEach((people)=>{
-    const name = document.createElement('h2');
-    name.textContent = `Name: ${people.name}`;
-
-    // age ke liye
-    const age = document.createElement('p');
-    age.textContent = `Age: ${people.age}`;
-    
-
-    // create image
-    const image = document.createElement('img');
-    image.src = people.photo;
-
-    // create a card:
-
-    const card = document.createElement('div');
-    card.append(image,name,age);
+  const imgx = document.createElement('img');
+  imgx.src = x.photo;
 
 
-    // put this card into the root element
-    arr.push(card);
+const card = document.createElement('div');
+card.append(imgx,name,age);
+
+//put above card in troot ellement 
+
+arr .push(card);
 })
 
-
 root.append(...arr);
+

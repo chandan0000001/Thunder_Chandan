@@ -1,16 +1,16 @@
 const users = [
   {
-    name: "Aarav Sharma",
+    name: "Dipsa Panigrahi",
     age: 24,
     photo: "https://randomuser.me/api/portraits/men/1.jpg"
   },
   {
-    name: "Priya Verma",
+    name: "Assema Panigrahi",
     age: 22,
     photo: "https://randomuser.me/api/portraits/women/2.jpg"
   },
   {
-    name: "Rahul Mehta",
+    name: "Lokesh Sahu",
     age: 26,
     photo: "https://randomuser.me/api/portraits/men/3.jpg"
   },
