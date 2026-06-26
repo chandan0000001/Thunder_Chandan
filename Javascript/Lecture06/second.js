@@ -35,9 +35,24 @@
 
 // push, pop, unshift, shift
 
-// const arr = [10,20,30]
+// const arr = [23,24,25,42,4,5,324,3]
+// arr.shift(); 
+// console.log(arr);
 
 // console.log(typeof arr);
+
+// //unshift 
+// const arr1 = [0,34,3,6,3,24,25,42,4,5,3,2,4,3];
+// arr1.unshift(88,43,90,0);
+// console.log(arr1);
+
+
+
+// let num = [1,3,5,6,7,8,80]
+// for(let i =0;i <num.length;i++){
+// console.log(num[i]);
+// }//
+
 
 
 // for of Loop ka use bhut karte hai

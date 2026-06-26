@@ -117,10 +117,47 @@
 
 
 
-const num = [10,20,30,40,60];
-// const first =  num[0];
-// const second = num[1];
-//remaining is the store the all  rest numbers by using rest operator 
-const [first , second ,...remaining]  = num ;
-//remaining array : Resst operator (...)
-console.log(first , second , remaining);
+// const num = [10,20,30,40,60];
+// // const first =  num[0];
+// // const second = num[1];
+// //remaining is the store the all  rest numbers by using rest operator 
+// const [first , second ,...remaining]  = num ;
+// //remaining array : Resst operator (...)
+// console.log(first , second , remaining);
+
+
+
+// const num = [23,35,25,2,4,246,423,66]
+// const first = num[0]; const second = num[1];
+// console.log(first,second); //23 35
+// const n1 = num[0];const n2 =num[1]; //rest part will store in the n3 
+// const restx = [n1,n2,...num];
+// console.log(restx)
+
+
+
+
+let numx = [13,11,21,23,122]
+numx.sort((a,b)=>{a-b});
+console.log(numx);
+
+
+
+
+
+
+
+
+
+
+
+
+// const num1 = [23,341,45,45,5,34,52,35]
+// const num2 = [1,3,4,56,6,3,2,4,5]
+// const num3 = [25,5,24,0,6,7,8,8,7,6,5]
+// //old method > .concat();
+// const num = num1.concat(num2,num3);
+// console.log(num);
+// //new method > spread operator 
+// const numx = [...num1,...num2,...num3]
+// console.log(numx);
