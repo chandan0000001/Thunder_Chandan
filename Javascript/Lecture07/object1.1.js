@@ -158,7 +158,44 @@
 
 
 
-const obj1 = {name:"Chandan"};
-const obj2 = obj1;
-obj2.name="Rohit";
-console.log(obj1); //{ name: 'Rohit' }
+// const obj1 = {name:"Chandan"};
+// const obj2 = obj1;
+// obj2.name="Rohit";
+// console.log(obj1); //{ name: 'Rohit' }
+
+
+
+// const user = {
+//     name: "Chandan",
+//     age:23,
+//     adress:"Odisha",
+//     amount: 2341111
+//     }
+//     console.log(user);
+//     user.name= "Dipsa";
+// console.log(user);
+
+
+// const user= {
+//     u1: "Ashrita",
+//     u2:"Dipsa",
+//     u3:"chandan Maharana",
+//     u4:"Bibek",
+//     is_pemium_member : false, // keys with special charactr must be in qutes;
+//     }
+//     console.log(user);
+
+
+
+
+// const book = {author:"chandan",age:23,amount:123412}
+// book.author = "Kiran";
+// book.age = 312;
+// console.log(book);
+
+// const book = {authotr: "Bibek"}
+// delete book.authotr;
+// console.log(book)
+// const book1 = {author:"chandan",age:23,amount:123412}
+// delete book1.age;
+// console.log(book1);

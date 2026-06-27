@@ -46,17 +46,17 @@
 
 
 // const user = {
-//     name: "rohit",
+//     name: "chandan",
 //     age: 20,
-//     email: "negi@gmail.com",
+//     email: "chandan@gmail.com",
 //     amount: 90,
 //     arr: [10,20,30,40],
 //     greet: function(){
-//         console.log("Hello Ji");
+//         console.log("Hello Ji Kese ho ? ");
 //     },
 //     address: {
-//      city: "dwarka",
-//      pincode: 246149
+//      city: "Kerla ",
+//      pincode: 246132149
 //     }
 // };
 
@@ -67,32 +67,32 @@
 
 
 // const customer = {
-//     name: "Rohit",
+//     name: "Chandan",
 //     age: 20,
 //     accountNumber: 124554,
 //     balance: 40,
-//     city: "kotdwar"
+//     city: "Banglore"
 // };
 
 
 
 
-// Keys ko print karana hai?
-// [ 'name', 'age', 'accountNumber', 'balance', 'city' ]
+// // Keys ko print karana hai?
+// // [ 'name', 'age', 'accountNumber', 'balance', 'city' ]
 // console.log(Object.keys(customer))
 
-// [ 'Rohit', 20, 124554, 40, 'kotdwar' ]
+// // [ 'Chandan', 20, 124554, 40, 'Banglore' ]
 // console.log(Object.values(customer))
 
 
-// keys and values:
-// [
-//   [ 'name', 'Rohit' ],
-//   [ 'age', 20 ],
-//   [ 'accountNumber', 124554 ],
-//   [ 'balance', 40 ],
-//   [ 'city', 'kotdwar' ]
-// ]
+// // keys and values:
+// // [
+// //     [ 'name', 'Chandan' ],
+// //     [ 'age', 20 ],
+// //     [ 'accountNumber', 124554 ],
+// //     [ 'balance', 40 ],
+// //     [ 'city', 'Banglore' ]
+// //   ]
 // console.log(Object.entries(customer));
 
 
@@ -288,3 +288,99 @@
 
 
 //
+
+
+// function display(usery){
+//    console.log(usery.name);
+//    console.log(usery.age);
+//    console.log(usery.amount);
+//    console.log(usery.state);
+//    console.log(usery.num);
+// }
+
+// // from backend data will comes like below  array ke andar object 
+// const users = [
+//     {
+//             name:"Assema",
+//             age:19,
+//             amount: 33244,
+//             state:"Odisha",
+//             num:871248142
+//         },
+//         {
+//             name:"Chandan",
+//             age:20,
+//             amount: 35244,
+//             state:"Odisha",
+//             num:871248142
+//         },
+//         {
+//             name:"Damyanti",
+//             age:20,
+//             amount: 324423,
+//             state:"Odisha",
+//             num:871248142
+//         },  {
+//             name:"Rohit",
+//             age:20,
+//             amount: 324,
+//             state:"Odisha",
+//             num:871248142
+//         },
+//         {
+//             name:"Mohit",
+//             age:20,
+//             amount: 3244,
+//             state:"Odisha",
+//             num:871248142
+//         },
+//         {
+//             name:"Chandanx",
+//             age:20,
+//             amount: 3244,
+//             state:"Odisha",
+//             num:871248142
+//         }
+// ]
+// display(users); //undefined 
+// //use for of loop 
+// for( x of users){
+//     display(x);
+// }
+
+
+
+
+
+
+
+
+
+// const user = {
+//      name: "Chandan",
+//       xHero: function() {
+//     // Here, `this` refers to the 'user' object.
+//     console.log(`Hello, my name is ${this.name}.`);
+//     }};user.xHero(); // Outputs: "Hello, my name is Chandan"
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const car = {
+//     make: "tata",
+//     model:"amitab",
+//     year:1210
+//     }
+//     //use for of loop
+//     for(const [x , y] of Object.entries(car)){
+//     console.log(`${x}: ${y}`)
+//     }
