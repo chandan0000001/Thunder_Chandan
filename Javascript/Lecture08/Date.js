@@ -91,3 +91,27 @@
 
 
 
+// const mydate = new Date(2026, 8,4,6,20,11,125);
+// console.log(mydate);
+// console.log(mydate.toString());
+
+
+
+
+// const now = new Date(); 
+
+// console.log(now.getFullYear());  //2026
+// console.log(now.getMonth());    //5
+// console.log(now.getDate());     //29
+// console.log(now.getDay());      //1  week: 0=Sunday, 1=Monday, ..., 4=Thursday)
+// console.log(now.getHours());    //21
+// console.log(now.getMinutes());  //17
+
+
+//Date autocorrection 
+// 2025 is not a leap year, so February has 28 days.
+// You are asking for Feb 28 + 2 days.
+const a = new Date(2025, 1, 30);
+
+// The date object auto-corrects to March 2nd, 2025.
+console.log(a.toString()); // Outputs: Sun Mar 02 2025 ...

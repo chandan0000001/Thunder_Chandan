@@ -222,11 +222,29 @@
 
 
 
-const user = ()=> {
-    return {
-        name:"Chandan",
-        age : 23,
-    }
-}
-console.log(user());
-console.log(typeof(user()));
+// const user = ()=> {
+//     return {
+//         name:"Chandan",
+//         age : 23,
+//     }
+// }
+// console.log(user());
+// console.log(typeof(user()));
+
+
+// let arr = [32,4,22,41,4145,43];
+// const ans =  arr((a,b)=>{a-b});
+// console.log(ans);
+
+
+//Spread: Unpack the array into individual elements
+// let arr1 = [1,24,341,234,56]
+// let arr2 = [4,56,73,134,66]
+// const arr = [...arr1,...arr2];
+// console.log(arr);
+
+
+const person = {name: "Sabat" , age: 83};
+const UpdatePrson = {...person , city: "Puri"};
+console.log(UpdatePrson);
+console.log(person);
