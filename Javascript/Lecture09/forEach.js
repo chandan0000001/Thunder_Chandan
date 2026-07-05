@@ -67,23 +67,59 @@
 // aditya(10,20,"Rohit");
 
 
-const arr = [10,20,8,19,14,23];
+// const arr = [10,20,8,19,14,23];
 
 // const printer = (num,index,a)=>{
 //     console.log(num,index,a);
 // }
 
-Array.prototype.forLoop = function(x){
-    for(let i = 0 ;i <arr.length;i++){
-        x(arr[i],i,arr);
-    }
-}
+// Array.prototype.forLoop = function(x){
+//     for(let i = 0 ;i <arr.length;i++){
+//         x(arr[i],i,arr);
+//     }
+// }
 
 
-// arr.forLoop(printer);
-arr.forLoop((num,index,a)=>{
-    console.log(num,index,a);
+// // arr.forLoop(printer);
+// arr.forLoop((num,index,a)=>{
+//     console.log(num,index,a);
+// });
+
+
+
+// let try some about examples
+const products = [
+    { id: 1, name: "Laptop",
+         category: "Electronics",
+          price: 1200,
+           inStock: true 
+        },
+    { id: 2, name: "Book",
+         category: "Books",
+          price: 30,
+           inStock: true
+         },
+    { id: 3, name: "Coffee Maker",
+         category: "Appliances",
+          price: 150,
+           inStock: false
+         },
+    { id: 4, name: "Headphones",
+         category: "Electronics",
+          price: 200, 
+          inStock: true 
+        }
+  ];
+  
+//   console.log(products);
+//   apply for each loop 
+  products.forEach((element,index) => {
+        console.log(`${element.id}-${element.name},`)
+  });
+
+
+
+const arr = [23,234,1,3,50,2,4,1];
+arr.forEach((element,index,a) => { //a print the reoetation of whole array 
+    console.log(element,index,a); //a print the repetation of array
 });
-
-
-
