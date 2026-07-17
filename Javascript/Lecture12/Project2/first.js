@@ -1,12 +1,8 @@
-const parent = document.getElementById('root');
 const body = document.querySelector('body');
 
-const color =  ["red","blue","orange","green","pink"]
-
+const parent = document.getElementById('root');
 parent.addEventListener('dblclick',(e)=>{
-//     console.log(e.target.id);
-//    body.style.backgroundColor = e.target.id;
-
-    const index =  e.target.id;
-    body.style.backgroundColor = color[index];
+    //e lake dega event object 
+    // console.log(e.target);
+    body.style.backgroundColor=e.target.id; //e.target se element milla and .id se color ka data millagya su
 })

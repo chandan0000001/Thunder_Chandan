@@ -1,0 +1,12 @@
+const body = document.querySelector("body");
+body.style.backgroundColor = "black";
+body.style.color = "";
+body.style.height="100%"
+
+// const body = document.querySelector("body");
+// body.style.backgroundColor = "black"; //make the color of the page is black
+// body.style.color = "white"; //ensure the text is readable
+
+const h1 = document.querySelector("h1");
+h1.style.backgroundColor = "orange";
+document.getElementById

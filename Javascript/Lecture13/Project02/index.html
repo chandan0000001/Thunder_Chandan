@@ -3,52 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Password Strength Checker
+    </title>
 </head>
-<body style="background-color: black; height: 100vh; color: white; font-size: 50px;">
-    
-    <div>
-        <label for="pass">Password: </label>
-        <input type="password" id="pass" style="height: 40px; width: 300px; font-size: 40px; padding: 5px;">
-        <h2 style="color: red; font-size: 30px; margin-left: 400px;">Week</h2>
+<body style="background-color: black; color: white; justify-content: center;">
+    <!-- //arrange h1 for heading  -->
+<h1 style="justify-content: center; text-align: center;color: red; font-size: 45px;">Password Strength Checker</h1>    
+
+
+
+    <div style="text-align: center; justify-content: center;">
+        <label style="font-size: 30px;padding:0px;" for="pass">Enter Password: </label>
+       <input type="password" id="pass" style="padding:10px;">
+
+    <h3 style="font-size: 30px; color: red; margin-right: 200px;">Week</h3>
+
     </div>
-    <script>
-      
-      const input = document.getElementById('pass');
 
-      input.addEventListener('input',()=>{
-        const password = input.value;
-        // password: ki length >=8
-        // captial, small, special, number
-        let hasCaptial = false , hasSmall = false, hasSpecial = false, hasNumber = false;
-        // password = "Rohit@456"
-        for(let i=0;i<password.length;i++){
-            let ch = password[i];
-            
-            // capital letter
-            if(ch>='A'&&ch<='Z')
-                hasCaptial = true;
-            else if(ch>='a' && ch<='z')
-                hasSmall = true;
-            else if(ch>='0' && ch<='9')
-                hasNumber = true;
-            else
-                hasSpecial = true;
-        }
 
-        if(password.length>=8&&hasCaptial&&hasSmall&&hasNumber&&hasSpecial){
-            // UI display karo, it is strong
-            const h2 = document.querySelector('h2');
-            h2.textContent = "Strong"
-            h2.style.color = "green";
-        }
-        else{
-            const h2 = document.querySelector('h2');
-            h2.textContent = "week"
-            h2.style.color = "red";
-        }
-      })
 
-    </script>
+    <script src="./second.js"></script>
 </body>
 </html>

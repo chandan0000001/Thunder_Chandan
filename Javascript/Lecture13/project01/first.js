@@ -1,15 +1,17 @@
+const boy =  document.getElementById("boy")
+const gitl= document.getElementById("girl");
+
 const button = document.querySelector('button');
 
+const h4 =  document.querySelector('h4');
 
-button.addEventListener('click',()=>{
-    const Boys = document.getElementById('boy');
-    const Girls = document.getElementById('girl');
 
-    const value1 = Boys.value.length;
-    const value2 = Girls.value.length;
 
-    const result = (value1*value2*value1*value2)%101;
+button.addEventListener(`click` ,()=>{
+    const val1 = boy.value.length;
+    const val2 = gitl.value.length;
 
-    const h2 = document.querySelector('h2');
-    h2.textContent = `Result is: ${result}%`;
+    const result = (val1*val2*val1*val2)  % 101;
+  
+    h4.textContent = `Result is : ${result}%`
 })

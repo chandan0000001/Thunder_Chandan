@@ -51,14 +51,13 @@ const quotes = [
   "Make it happen."
 ];
 
-
-const button = document.querySelector('button');
+const bt = document.querySelector('button')
 const h2 = document.querySelector('h2');
+bt.addEventListener('click' ,()=>{
 
-button.addEventListener('click',()=>{
-   
-  //  0-49 index
+  // 0-49 we have this we can use math. random for this 
   const index = Math.floor(Math.random()*50);
 
-   h2.textContent = quotes[index];
+  // h2.textContent= "God "
+  h2.textContent=quotes[index]
 })
