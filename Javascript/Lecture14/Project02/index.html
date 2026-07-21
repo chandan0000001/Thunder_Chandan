@@ -1,91 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Tic Tac Toe</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic Tac toe</title>
   <style>
-    * { box-sizing: border-box; }
-    body {
-      font-family: system-ui, sans-serif;
-      background: #0f1419;
-      color: #e6e6e6;
-      min-height: 100vh;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 40px 20px;
-    }
-    h1 { color: #4ade80; margin: 0 0 10px; }
 
-    #status {
-      font-size: 20px;
-      font-weight: 600;
-      margin: 15px 0;
-      min-height: 28px;
-    }
 
-    /* The board is just a 3x3 CSS grid — no positioning math needed.
-       The browser handles laying out the 9 cells for us. */
-    #board {
-      display: grid;
-      grid-template-columns: repeat(3, 100px);
-      grid-template-rows: repeat(3, 100px);
-      gap: 5px;
-      background: #2a3340;
-      padding: 6px;
-      border-radius: 8px;
-    }
-
-    .cell {
-      background: #1a2028;
-      border: none;
-      font-size: 48px;
-      font-weight: 700;
-      color: #f1f5f9;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-    .cell:hover:not(:disabled) { background: #243042; }
-    .cell:disabled { cursor: not-allowed; }
-
-    .x { color: #60a5fa; }
-    .o { color: #f87171; }
-
-    button.reset {
-      margin-top: 20px;
-      padding: 10px 24px;
-      font-size: 15px;
-      background: #16a34a;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    button.reset:hover { background: #15803d; }
-  </style>
-</head>
-<body>
+  *{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, Helvetica, sans-serif;
+  }
+  
+  body{
+  background:#111;
+  color:white;
+  min-height:100vh;
+  
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:20px;
+  }
+  
+  h1{
+  font-size:3rem;
+  letter-spacing:2px;
+  }
+  
+  #status{
+  font-size:1.4rem;
+  color:#00d4ff;
+  font-weight:bold;
+  }
+  
+  #board{
+  display:grid;
+  grid-template-columns:repeat(3,120px);
+  grid-template-rows:repeat(3,120px);
+  gap:10px;
+  }
+  
+  .cell{
+  width:120px;
+  height:120px;
+  
+  background:#222;
+  border:2px solid #555;
+  border-radius:12px;
+  
+  color:white;
+  font-size:3rem;
+  font-weight:bold;
+  cursor:pointer;
+  
+  transition:0.25s;
+  }
+  
+  .cell:hover{
+  background:#333;
+  border-color:#00d4ff;
+  transform:scale(1.05);
+  }
+  
+  .cell:active{
+  transform:scale(0.95);
+  }
+  
+  .reset{
+  margin-top:15px;
+  padding:12px 30px;
+  
+  background:#00d4ff;
+  color:black;
+  
+  border:none;
+  border-radius:8px;
+  
+  font-size:1rem;
+  font-weight:bold;
+  cursor:pointer;
+  
+  transition:.3s;
+  }
+  
+  .reset:hover{
+  background:#00b4d8;
+  transform:translateY(-2px);
+  }
+  
+  .reset:active{
+  transform:translateY(0);
+  }
+</style>
+</head >
+<body style="background-color: black; color: wheat;">
 
   <h1>Tic Tac Toe</h1>
   <div id="status">Player X's turn</div>
 
   <div id="board">
-    <button class="cell" id="0"></button>
-    <button class="cell" id="1"></button>
-    <button class="cell" id="2"></button>
-    <button class="cell" id="3"></button>
-    <button class="cell" id="4"></button>
-    <button class="cell" id="5"></button>
-    <button class="cell" id="6"></button>
-    <button class="cell" id="7"></button>
-    <button class="cell" id="8"></button>
+    <button class="cell"  id="0" ></button>
+    <button class="cell" id="1" ></button>
+    <button class="cell" id="2" ></button>
+    <button class="cell" id="3" ></button>
+    <button class="cell"  id="4"></button>
+    <button class="cell" id="5" ></button>
+    <button class="cell"  id="6"></button>
+    <button class="cell"  id="7"></button>
+    <button class="cell"  id="8"></button>
   </div>
 
-  <button class="reset" id="resetBtn">Reset Game</button>
-
-  <script src="./first.js">
-   
-  </script>
+  <button class="reset" id="resetbtn">Reset Game</button>
+  <script src="./first.js"></script>
 </body>
 </html>

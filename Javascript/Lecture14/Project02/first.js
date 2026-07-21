@@ -1,82 +1,89 @@
+//Winner Logic 
+// row : 012 , 345 , 678
+// col : 036 , 147 , 258
+// digo: 048, 246
+
+//DRAW logic 
+//when array complete full then stop 
+
 const gridBox = ["","","","","","","","",""];
-let totalInsert = 0;
-let winnerDecided = false;
-// row: 012 , 345 , 678
-// col: 036, 147, 258
-// dig: 048 , 246
-// player:'X', "O"
-
-const stat = document.getElementById('status');
-
-function checkWinner(player){
-   if(gridBox[0]==player&&gridBox[1]==player&&gridBox[2]==player)
-    return true;
-   else if(gridBox[3]==player&&gridBox[4]==player&&gridBox[5]==player)
-    return true;
-   else if(gridBox[6]==player&&gridBox[7]==player&&gridBox[8]==player)
-    return true;
-   else if(gridBox[0]==player&&gridBox[3]==player&&gridBox[6]==player)
-    return true;
-   else if(gridBox[1]==player&&gridBox[4]==player&&gridBox[7]==player)
-    return true;
-   else if(gridBox[0]==player&&gridBox[4]==player&&gridBox[8]==player)
-    return true;
-   else if(gridBox[2]==player&&gridBox[4]==player&&gridBox[6]==player)
-    return true;
-   else if(gridBox[2]==player&&gridBox[5]==player&&gridBox[8]==player)
-    return true;
-   else 
-    false;
+let totalInsert = 0 ;
+let winner = false;
+function checkWinner (palyer){
+    if(gridBox[0]==palyer && gridBox[1]== palyer && gridBox[2]==palyer){
+        return true;
+    }
+    else if(gridBox[3]==palyer && gridBox[4]== palyer && gridBox[5]==palyer){
+        return true;
+    }
+    else if(gridBox[6]==palyer && gridBox[7]== palyer && gridBox[8]==palyer){
+        return true;
+    }else if(gridBox[0]==palyer && gridBox[3]== palyer && gridBox[6]==palyer){
+        return true;
+    }else if(gridBox[1]==palyer && gridBox[4]== palyer && gridBox[7]==palyer){
+        return true;
+    }else if(gridBox[2]==palyer && gridBox[5]== palyer && gridBox[8]==palyer){
+        return true;
+    }else if(gridBox[0]==palyer && gridBox[4]== palyer && gridBox[8]==palyer){
+        return true;
+    }else if(gridBox[2]==palyer && gridBox[4]== palyer && gridBox[6]==palyer){
+        return true;
+    }
+    else {
+        false;
+    }
 }
 
 
 const board = document.getElementById('board');
+const sta = document.getElementById('status');
 let turn = 'X';
-
-board.addEventListener('click',(e)=>{
-    // console.log(e.target.id);
-    // if winner decide or game draw
-    if(winnerDecided || totalInsert==9 || gridBox[e.target.id]!=""){
+board.addEventListener('click' , (e)=>{
+    // console.log(e);
+    
+    //winner logic and draw
+    if(winner || totalInsert==9 || gridBox[e.target.id]!=""){
         return;
     }
-    
-    // console.log("hello");
-    const box = e.target;
-    box.textContent = turn;
-    const index = box.id;
 
+    const box = e.target;
+    box.textContent=turn;
+    const index = box.id; //we can acess bos id  so jo iska id hoga wohi idex higa 
     gridBox[index] = turn;
     totalInsert++;
 
     if(checkWinner(turn)){
-        stat.textContent = `Player ${turn} won the game`;
-        winnerDecided = true;
+        sta.textContent= `Player ${turn} won the game`;
+        winner =true;
         return;
     }
+
 
     if(totalInsert==9){
-        stat.textContent = `Game is Draw`;
+        sta.textContent= `Game is Draw`;
         return;
     }
 
-    if(turn=='X')
-        turn = 'O'
-    else
-        turn = 'X';
 
-     stat.textContent = `Player ${turn}'s Turn`;
-   
+    if(turn=='X'){
+        turn ='O';
+    }else{
+        turn='X';   
+    }
+    sta.textContent= `Player ${turn} move`;
+
 })
 
-const button = document.getElementById('resetBtn');
 
-button.addEventListener('click',()=>{
-    for(let i=0;i<9;i++){
-        document.getElementById(i).textContent = "";
-        gridBox[i] = "";
+
+const bt = document.getElementById('resetbtn');
+bt.addEventListener('click', ()=>{
+    for(let i =0 ; i<9 ; i++){
+        document.getElementById(i).textContent="";
+        gridBox[i]="";
     }
+    totalInsert=0;
+    winner=false;
+    sta.textContent= `Lets Start Again`;
 
-    totalInsert = 0;
-    winnerDecided = false;
-    stat.textContent = "Player X's turn";
 })
