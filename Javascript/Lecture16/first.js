@@ -1,37 +1,14 @@
 // Exectuion context
-// Memory allocation phase
-// a = <uninitlized>(Temporal dead zone)
-// b = <unitialized>(Temporal dead zone)
+//memory allocation 
+// a = <undefined> teamporally dead zone 
+//b = <undefined> temporally dead zone 
 
-// Exectuion phase
-// a = 10
-// b = 20
-// 10,20
+//Exectuion phase 
+//a = 123 ;
+//b = 12
 
+console.log(a); // undefined 
+var a = 123;
+console.log(b);//error
+let b = 12;
 
-// Execution context , 
-// a = 10
-// b = 20
-// sum1= <uninitlized>(Temporal dead zone)
-// addNumber =  <unitialized>(Temporal dead zone)
-
-// Hoisting ??
-
-
-
-
-let a = 10;
-const b = 20;
-
-
-
-const addNumber = function(num1,num2){
-    return num1+num2;
-}
-
-const sum1 = addNumber(a,b);
-
-
-
-
-console.log(sum1);

@@ -1,26 +1,26 @@
+// class and object
 class Person{
     constructor(name,age){
         this.name = name;
         this.age = age;
-        this.x = 10;
     }
-
     greet(){
-        console.log(`Hi ${this.name}`)
-    }
-};
-
-
-
-class Customer extends Person{
-    constructor(name,age,balance,city){
-        super(name,age);
-        this.balance = balance;
-        this.city = city;
+        console.log(`Hii ${this.name} your age is ${this.age}`);
     }
 }
 
+const user1 = new Person("Chandan" , 13);
+console.log(user1);
 
-const c1 = new Customer("ROhit",20,720,"Dwarka");
 
+class Customr extends Person {
+    constructor(name,age,balanace,city){
+        super(name,age);
+        this.balanace=balanace;
+        this.city=city;
+    }
+
+}
+
+const c1 = new Customr("chandan",12,1234,"Mumbai");
 console.log(c1);
