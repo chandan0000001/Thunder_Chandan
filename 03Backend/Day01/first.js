@@ -3,9 +3,6 @@ const gitHubProfile = [
     {},
     {}
 ]
-// 1 lakh size array hai
-// pehle se presen hai
-
 
 let number = 50;
 

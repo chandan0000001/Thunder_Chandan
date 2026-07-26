@@ -1,83 +1,82 @@
+// call back hell
+
+//Zomato application 
+// placeOder 
+// prepareOder 
+// pickUpOder
+// DeliverOder
+
 const orderDetail = {
-    orderId: 12314,
-    food: ["chicken Biryani","diet coke"],
-    price: 900,
-    payment_status: false,
-    token_assign: false,
-    restaurant_location: "New Delhi",
-    customer_location: "Dwarka",
-    pickingOrder: false,
-    delivered_order: false
-};
+    oderId :234354657,
+    user: "Dipesh",
+    price:1235,
+    food : ["Biriyani", "soup" , "panner"],
+    price:1090, 
+    payment_status : false,
+    token_asign : false,
+    resturant_location : "New Delhi",
+    coustumer_location : "Odisha",
+    pickOder : false
+}
 
-function placeOrder(orderDetail){
-    console.log(`Payment of ${orderDetail.price}rs is in Progress`);
-    
-    return  new Promise((resolve,reject)=>{
-        setTimeout(()=>{
-        console.log("Payment is completed");
+function placeOder (orderDetail){
+    console.log(`Payment Of ${orderDetail.price} rs in progress`);
+
+    return new Promise((resolve , reject)=>{
+          setTimeout(()=>{
+        console.log("Payment is completed")
         orderDetail.payment_status = true;
-        resolve(orderDetail);
-        },1000)
-      })
-
-    
-   
-}
-
-function prepareOrder(orderDetail){
-    console.log(`Restaurant received the order and preparing ${orderDetail.food}`);
-    
-    return new Promise((resolve,reject)=>{
-        setTimeout(()=>{
-        console.log("Your Order is prepared now");
-        orderDetail.token_assign = 123;
-        resolve(orderDetail);
-        },1000)
+       resolve(orderDetail);
+    },1300)
     })
-
-    //  setTimeout(()=>{
-    //     console.log("Your Order is prepared now");
-    //     orderDetail.token_assign = 123;
-    //     },1000)
-    
+  
 }
 
+function prepareOder(orderDetail){
+    console.log(`Restureant recived the oder and preparing ${orderDetail.food}`)
 
-function pickUpOrder(orderDetail){
-    console.log(`Delivery boy is on the way to pick order from ${orderDetail.restaurant_location} restaurant`);
-    
-   return new Promise((resolve,reject)=>{
-        setTimeout(()=>{
-        console.log("Delivery boy reached the restaurant");
-        orderDetail.pickingOrder = true;
-        resolve(orderDetail);
-       },1000)
-    })
-
-}
-
-function deliverOrder(orderDetail){
-    console.log(`Delivery boy pick the order from restaurant and delivering it to ${orderDetail.customer_location}`);
-    
-   return new Promise((resolve,reject)=>{
+    return new Promise((resolve , reject)=>{ 
          setTimeout(()=>{
-        console.log("Delivery boy delivered the order to customer");
-        orderDetail.delivered_order = true;
+        console.log("Your Oder is preapred now "),
+        orderDetail.token_asign = 345;
         resolve(orderDetail);
     },1000)
     })
+   
+}
+
+function pickUpOder (orderDetail){
+    console.log(`Deliver boy is on the way to pick oder from ${orderDetail.resturant_location}   `);
+    return new Promise((resolve , reject)=>{ 
+         setTimeout(()=>{
+        console.log("Delivery Boy reached the resturant ")
+       orderDetail.pickOder = true;
+       resolve(orderDetail);
+    },1500)
+    })
+   
+} 
+
+function deliverOrder(orderDetail){
+    console.log(`Deliver boy Picked the oder from the resturant  and deliver to the  ${orderDetail.coustumer_location}`);
+    return new Promise((resolve , reject)=>{ 
+         setTimeout(()=>{
+        console.log("Delivery Boy delivered the oder to the customer")
+        resolve(orderDetail);
+    },1790)
+    })
 
 }
 
 
-async function order() {
-    const p1 = await placeOrder(orderDetail);
-    const p2 = await prepareOrder(p1);
-    const p3 = await pickUpOrder(p2);
-    const p4 = await deliverOrder(p3);
 
+
+async function oder( ) {
+    const p1 = await placeOder(orderDetail);
+    const p2= await prepareOder(p1);
+    const p3 = await prepareOder(p2);
+    const p4 = await deliverOrder(p3);
     console.log(p4);
 }
 
-order();
+oder();

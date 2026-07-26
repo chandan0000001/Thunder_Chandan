@@ -1,74 +1,3 @@
-
-// let balance = 200;
-
-// balance isko private mein bana du
-
-
-// const user1 = {
-//     balance: 1000,
-//     credit: function(amount){
-//         if(typeof amount == "number")
-//         this.balance+=amount;
-//     },
-//     debit: function(amount){
-//         if(typeof amount == "number" && amount<=this.balance && amount>0)
-//         this.balance-=amount;
-//     },
-//     checkBalance: function(){
-//         console.log(this.balance);
-//     }
-// }
-
-
-// // user1.credit(170);
-// // user1.credit(10);
-// // user1.debit(5);
-// // user1.checkBalance();
-// user1.balance = "Rohit";
-
-// user1.checkBalance();
-
-
-// function bank(){
-
-//     let balance = 200;
-
-//     function credit(amount){
-//         if(typeof amount == "number")
-//            balance+=amount;
-//     }
-
-//     function debit(amount){
-//         if(typeof amount == "number" && amount<=balance){
-//             balance-=amount;
-//         }
-//     }
-
-//     function checkBalance(){
-//         console.log(balance);
-//     }
-    
-//     // return {
-//     //     credit: credit,
-//     //     debit: debit,
-//     //     checkBalance: checkBalance
-//     // }
-
-//     return {
-//         credit,debit,checkBalance
-//     }
-// }
-
-// // a = [credit,debit,checkBalance]
-// // const a = bank();
-// // a[2]();
-
-// const user = bank();
-// user.credit(200);
-// user.checkBalance();
-
-
-
 // function bank(){
     
 //     let balance = 200;
@@ -100,4 +29,56 @@
 
 
 
+// const  bank_user = {
+//     balance : 10000,
+//     credit: function (amount){
+//         if(typeof amount == "number")
+//           this.balance+=amount;
+//     },
+//     debit: function(amount){
+//         if(typeof amount == "number" && amount<=this.balance && amount > 0)
+//              this.balance-=amount;
+//     },
+//     checkBalance: function (){
+//         console.log(this.balance);
+//     }
+// }
 
+
+// bank_user.credit(70);
+// bank_user.debit(5);
+// bank_user.checkBalance();
+
+
+// we need to do balance private otherwise it will acess by mistake like bank_user = "Chandan"; console.log(bank_user.balance)  //chandan
+
+function bank() {
+    const bank_user = {
+        balance: 10000,
+        credit(amount) {
+            if (typeof amount === "number") {
+                this.balance += amount;
+            }
+        },
+        debit(amount) {
+            if (
+                typeof amount === "number" && amount > 0 &&
+                amount <= this.balance
+            ) {
+                this.balance -= amount;
+            }
+        },
+        checkBalance() {
+            console.log(this.balance);
+        }
+    };
+    return bank_user;
+}
+// console.log(bank.bank_user.balance)  //TypeError: Cannot read properties of undefined (reading 'balance')
+
+const user = bank();
+user.checkBalance();
+user.credit(5000);
+user.checkBalance();
+user.debit(3000);
+user.checkBalance();

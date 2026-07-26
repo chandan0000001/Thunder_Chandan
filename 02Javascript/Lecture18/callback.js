@@ -1,82 +1,72 @@
-// Callback hell 
-// First Principle: DRY, Code Readable
+// call back hell
 
-// zomato application
-// placeOrder
-// prepareOrder
-// pickUpOrder
-// DeliverOrder
-
-//  Callback = ()=>{
-
-//     prepareOrder();
-// }
-
-// Callback() = prepareOrder()
+//Zomato application 
+// placeOder 
+// prepareOder 
+// pickUpOder
+// DeliverOder
 
 const orderDetail = {
-    orderId: 12314,
-    food: ["chicken Biryani","diet coke"],
-    price: 900,
-    payment_status: false,
-    token_assign: false,
-    restaurant_location: "New Delhi",
-    customer_location: "Dwarka",
-    pickingOrder: false,
-};
+    oderId :234354657,
+    user: "Dipesh",
+    price:1235,
+    food : ["Biriyani", "soup" , "panner"],
+    price:1090, 
+    payment_status : false,
+    token_asign : false,
+    resturant_location : "New Delhi",
+    coustumer_location : "Odisha",
+    pickOder : false
+}
 
-function placeOrder(orderDetail , Callback){
-    console.log(`Payment of ${orderDetail.price}rs is in Progress`);
+function placeOder (orderDetail,Callback){
+    console.log(`Payment Of ${orderDetail.price} rs in progress`);
 
     setTimeout(()=>{
-        console.log("Payment is completed");
+        console.log("Payment is completed")
         orderDetail.payment_status = true;
         Callback(orderDetail);
-    },1000)
+    },1300)
 }
 
-function prepareOrder(orderDetail , Callback){
-    console.log(`Restaurant received the order and preparing ${orderDetail.food}`);
+function prepareOder(orderDetail, Callback){
+    console.log(`Restureant recived the oder and preparing ${orderDetail.food}`)
 
     setTimeout(()=>{
-        console.log("Your Order is prepared now");
-        orderDetail.token_assign = 123;
+        console.log("Your Oder is preapred now "),
+        orderDetail.token_asign = 345;
         Callback(orderDetail);
     },1000)
 }
 
-
-function pickUpOrder(orderDetail, Callback){
-    console.log(`Delivery boy is on the way to pick order from ${orderDetail.restaurant_location} restaurant`);
+function pickUpOder (orderDetail, Callback){
+    console.log(`Deliver boy is on the way to pick oder from ${orderDetail.resturant_location}   `);
 
     setTimeout(()=>{
-        console.log("Delivery boy reached the restaurant");
-        orderDetail.pickingOrder = true;
+        console.log("Delivery Boy reached the resturant ")
+       orderDetail.pickOder = true;
         Callback(orderDetail);
-    },1000)
-}
+    },1500)
+} 
 
-function deliverOrder(orderDetail){
-    console.log(`Delivery boy pick the order from restaurant and delivering it to ${orderDetail.customer_location}`);
-
+function deliverOrder(orderDetail,Callback){
+    console.log(`Deliver boy Picked the oder from the resturant  and deliver to the  ${orderDetail.coustumer_location}`);
     setTimeout(()=>{
-        console.log("Delivery boy delivered the order to customer");
-    },1000)
+        console.log("Delivery Boy delivered the oder to the customer")
+        Callback(orderDetail);
+    },1790)
 }
 
+// function bill_gen () {
+//     console.log(orderDetail);
+// }
 
-// placeOrder(prepareOrder(pickUpOrder));
-
-// placeOrder(prepareOrder);
-
-
-
-placeOrder(orderDetail ,(orderDetail)=>{
-    prepareOrder(orderDetail,(orderDetail)=>{
-        pickUpOrder(orderDetail,(orderDetail)=>{
-            deliverOrder(orderDetail);
+placeOder( orderDetail,()=>{
+    prepareOder(orderDetail,()=>{
+        pickUpOder(orderDetail ,()=>{
+            deliverOrder(orderDetail,()=>{
+                // bill_gen();
+            });
         });
     });
 });
-
-
