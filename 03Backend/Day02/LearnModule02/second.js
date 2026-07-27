@@ -1,21 +1,18 @@
 
-// console.log("Hello second")
-
 export default function hatim(){
-    console.log("I am defaulter Hatim");
+    console.log("I am Default");
 }
 
-export function add(){
+function add(){
     console.log("I am adding number")
 }
 
-export function sub(){
+function sub(){
     console.log("I am subtratcting");
 }
 
-
-export function fibonacci(){
-    console.log("I am fibonacci")
+export function fibonaci (){
+    console.log("Hello From Fibonacci");
 }
 
-// export {add, sub};
+export{add,sub};

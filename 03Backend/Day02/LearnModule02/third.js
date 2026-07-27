@@ -1,9 +1,4 @@
-
-
-// console.log("Hello third")
-
 function fib(){
-    console.log("I am fib");
+    console.log("i am fib");
 }
-
-export {fib}
+export {fib};

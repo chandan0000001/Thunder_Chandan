@@ -2107,27 +2107,20 @@ const gitHub = [
 
 // http is just an object
 const server = http.createServer((request,response)=>{
-    
-
     const number = Number(request.url.slice(1));
-    // let str1="";
-    // for(let i=1;i<str.length;i++)
-    //     str1+=str[i];
+//let optimize this 
+//"ab20" - > Which is NAN so give it invalid url and nmber must be greater than 0 
+   if(isNaN(number) || number<=0){
+    response.end("Invalid Url");
+    return; //it is a call back funt so it return 
+   }
+   //handle another like we cant fetch more than 100 user {JUST LIKE RATE LIMITER}
+ if(number>100){
+    response.end("We can not fetch more than 100 user ");
+    return;
+ }
 
-    // // str1 : 15
-    // let number = Number(str1);
-
-    if(isNaN(number) || number<=0){
-        response.end("Invalid URL");
-        return;
-    }
-
-    if(number>100){
-        response.end("You can fetch more than 100 user");
-        return;
-    }
-    
-    
+ 
     const arr = []
 
     for(let i=0;i<number;i++){

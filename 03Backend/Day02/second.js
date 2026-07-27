@@ -1,33 +1,34 @@
 const http = require('http');
-
-
-const server = http.createServer((request,response)=>{
-      
-    const path = request.url.split('/');
+const server = http.createServer((req,res)=>{
+    const path = req.url; // -> "/add/10/20"
+    const url = path.split("/");
+    // ["" , add , 10 , 20]; ->  here all are string 
+    const operation = url[1];
+    const num1 =  Number(url[2]);
+    const num2 = Number(url[3]);
+    if(operation == 'add'){
+        res.end(JSON.stringify(num1+num2));
+    }
+    else if(operation == 'mul'){
+            res.end(JSON.stringify(num1*num2));
+        }
+        else if(operation == 'sub'){
+            res.end(JSON.stringify(num1 - num2));
+        }
+        else if(operation == 'div'){
+            res.end(JSON.stringify(num1 / num2));
+        }
+        else {
+            res.end("Invalid operation");
+        }
     
-    // path = ['' , "add", "10", "20"];
-    const operation = path[1];
-    const number1 = Number(path[2]);
-    const number2 = Number(path[3]);
-
-    if(operation==='add'){
-        response.end(JSON.stringify(number1+number2));
-    }
-    else if(operation=='sub'){
-        response.end(JSON.stringify(number1-number2));
-    }
-    else if(operation=='mul'){
-        response.end(JSON.stringify(number1*number2));
-    }
-    else if(operation=='div'){
-        response.end(JSON.stringify(number1/number2));
-    }
-    else{
-        response.end("Invalid Operation");
-    }
 })
 
 
+// operation || num1  || num2
+//"http://localhost:3000/add/10/20" 
+// http://localhost:3000/mul/10/20
+//http://localhost:3000/div/10/20
 server.listen(3000,()=>{
-    console.log("Server is listening at 3000 port");
+    console.log("Server Listening at 3000 PORT");
 })

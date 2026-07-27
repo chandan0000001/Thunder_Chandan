@@ -1,13 +1,10 @@
+//there is only one export default exist 
+import hatim, {add,sub,fibonaci} from "./second.js";
+import {fib} from "./third.js";
 
-import hatim , {add,sub,fibonacci} from "./second.js"
-import {fib} from "./third.js"
 
-console.log("I am first")
+console.log("i am first");
 add();
 sub();
-fibonacci();
-hatim();
-
-fib();
-
-console.log("I am done");
+fibonaci();
+console.log("i am done");
