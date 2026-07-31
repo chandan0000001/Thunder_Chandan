@@ -1,69 +1,105 @@
-const http = require('http');
+
+const database = [{name: "chandan",age:10,email:"adf@gmail.com"}
+    ,{name: "mohh",age:13,email:"adfzvcv@gmail.com"}
+    ,{name: "rahul",age:32,email:"aasdfafv@gmail.com"}];
+
+
+const http = require('http')
 const url = require('url');
+const server = http.createServer((req,res)=>{
+const parsed = url.parse(req.url, true);
+const operation = parsed.pathname.slice(1);
+const user = parsed.query;
+    
+    //for prining log 
+    console.log(req.url);
 
-const Database = [{name:"Rohit",age:10,email:"negirohit@gmail.com"},
-    {name:"Mohit",age:20,email:"neymar@gmail.com"}
-]
-
-
-function createUser(user){
-    Database.push(user);
-}
-
-// user = {email: "neymar@gmail.com"}
-
-function DeleteUser(user){
-    // user.email
-    for(let i=0;i<Database.length;i++){
-        if(Database[i].email == user.email){
-            Database.splice(i,1);
-            break;
+function createUser(user) {
+        user.age = Number(user.age);
+        database.push(user);
+    }
+function deleteUser(user) {
+        for (let i = 0; i < database.length; i++) {
+            if (database[i].email == user.email) {
+                database.splice(i,1);
+                break;
+            }
         }
     }
-    
-}
+
+function patchUpdate(user) {
+        for (let i = 0; i < database.length; i++) {
+            if (database[i].email == user.email) {
+                if (user.name)
+                    database[i].name = user.name;
+                if (user.age)
+                    database[i].age = Number(user.age);
+                break;
+            }
+        }
+    }
+
+function putUpdate(user) {
+    for (let i = 0; i < database.length; i++) {
+        if (database[i].email == user.email) {
+                 database[i] = {
+                    name: user.name,
+                    age: Number(user.age),
+                    email: user.email
+                };
+                break;
+            }
+        }
+    }
 
 
-// user = {email:"neymar@gmail.com", age:11}
 
-// function patchUpdate(user){
-//     for(let i=0;i<Database.length;i++){
-//         if(Database[i].email == user.email){
+if (operation == "createUser") {
+        createUser(user);
+        res.end("User Created");
+        return;
+    }
+else if(operation=="deleteUser") {
+             deleteUser(user);
+            res.end("User Deleted");
+            return;
+    }
 
-//         }
-//     }
-// }
-
-
-const server = http.createServer((req,res)=>{
-    
-    console.log(req.url);
-    const parsed = url.parse(req.url, true);
-    const operation = parsed.pathname.slice(1);
-
-
-    if(operation=="deleteUser"){
-        DeleteUser(parsed.query);
-        res.end("I have delete the user");
+else if(operation == "patchUser") {
+        patchUpdate(user);
+        res.end("User Updated");
         return;
     }
 
-   else if(operation == "createUser"){
-        createUser(parsed.query);
-        res.end("User is created");
+else if(operation == "putUser") {
+        putUpdate(user);
+        res.end("User Replaced");
         return;
-   }
+    }
 
-   else if(operation == "getUser"){
-        res.end(JSON.stringify(Database));
+else if(operation=="getUser") {
+        res.end(JSON.stringify(database));
         return;
-   }
+    }
 
-   res.end("I am available");
-    
+res.end("Invalid Route");
 
-})
+});
 
-server.listen(3000,()=>{
-    console.log("Server is listening at port 3000");
-})
+server.listen(3000, () => {
+    console.log("Server is listening at 3000");
+});
+
+
+
+//get user 
+// http://localhost:3000/getUser
+// create user
+// http://localhost:3000/createUser?name=oxen&age=20&email=oxen@gmail.com
+//delete user
+// http://localhost:3000/deleteUser?email=oxen@gmail.com
+// patch user
+// http://localhost:3000/patchUser?email=adf@gmail.com&age=50
+// http://localhost:3000/patchUser?email=adf@gmail.com&name=Chandan
+// put user
+// http://localhost:3000/putUser?name=Rahul&age=35&email=adf@gmail.com

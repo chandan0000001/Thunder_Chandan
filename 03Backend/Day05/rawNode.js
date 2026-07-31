@@ -1,97 +1,90 @@
-import http from "http"
 
-const Database = [
-    {name:"Rohini", age: 10, email:"rohini@gmail.com", amount: 90},
-    {name:"Rohan", age: 30, email:"rohan@gmail.com", amount: 190},
-    {name:"Sohan", age: 20, email:"Sohini@gmail.com", amount: 900}
-];
+const db = [
+    {
+        "name":"Rohini",
+        "age":32,
+        "email":"roh@gamil.com",
+        "amount":23432
+    },{
+        "name":"Sujal",
+        "age":30,
+        "email":"sujal@gamil.com",
+        "amount":23432
+    },{
+        "name":"Sreelekha",
+        "age":12,
+        "email":"lekha@gamil.com",
+        "amount":242
+    },{
+        "name":"Santosh",
+        "age":2,
+        "email":"santosh@gamil.com",
+        "amount":212
+    }
+]
 
+
+
+import http from 'http';
 const server = http.createServer((req,res)=>{
-   
-    // get, post, put, patch , delete
+    // res.end('hello chandan')
+    
 
-    if(req.method == "POST" && req.url == "/user"){
-        // wait kar, poora data user ne bheja hai, wo aane de
-        let body = "";
-        req.on("data", (chunk)=>{
+    //get , post , put , patch ,delete
+
+    if(req.method=="GET" && req.url == "/user"){
+
+        // return res.end(JSON.stringify(db));
+        return res.end(JSON.stringify(db,null,2));
+    }
+
+
+    else if(req.method=="POST" && req.url == "/user"){
+        // const user = req.Body;
+        // console.log(user); data travel multilple packests but it catch all at a time so it return undefined so mujeh wait karrna he yaha pe -> Think about async await but we can try another things 
+
+        //body empty string he chunk pe packets ayegnge body ke andar dallna he 
+        let body ="";
+        req.on("data",(chunk)=>{
             body+=chunk;
-            // second storage save kar do
         })
-        req.on("end",()=>{
-            const user = JSON.parse(body);
-            Database.push(user);
-            res.end("User is Created successfully");
-            // js object mein convert ho paaye
+        req.on("end",(chunk)=>{
+            const user = JSON.parse(body);// for convert into js object parse used 
+             db.push(user);
         })
+       
+        return res.end("User Data is Created sucessfully")
     }
-
-
-
-
-
-    else if(req.method=="GET" && req.url == "/user"){
-        res.end(JSON.stringify(Database,null,2));
-    }
-
-    else if(req.method=="PATCH" && req.url=="/user"){
-        let body = "";
-        req.on("data", (chunk)=>{
-            body+=chunk;
-            // second storage save kar do
-        })
-        req.on("end",()=>{
-            const user = JSON.parse(body);
-            
-            const findUser = Database.find((u)=> u.email == user.email);
-
-            Object.assign(findUser,user);
-            
-            // for(const {key,value} of Object.entries(user)){
-            //     findUser[key] = value;
-            // }
-
-            res.end("Information updated succesfully");
-            // js object mein convert ho paaye
-        })
-    }
-//  {name:"Rohini", age: 30, email:"rohini@gmail.com", amount: 190}
-
-    else if(req.method=="POST" && req.url=="/user"){
-        res.end("User Data is created successfully");
-    }
-    else if(req.method=="PATCH" && req.url=="/user"){
-        res.end("User Data is patched successfully");
-    }
-    else if(req.method=="PUT" && req.url=="/user"){
-        res.end("User Data is Put successfully");
-    }
-    else if(req.method=="DELETE" && req.url=="/user"){
-        res.end("User Data is Deleted successfully");
-    }
-    if(req.method=="GET" && req.url == "/product"){
-        res.end("Hello Coder Army");
-    }
-    else if(req.method=="POST" && req.url=="/product"){
-        res.end("User Data is created successfully");
-    }
-    else if(req.method=="PATCH" && req.url=="/product"){
-        res.end("User Data is patched successfully");
-    }
-    else if(req.method=="PUT" && req.url=="/product"){
-        res.end("User Data is Put successfully");
-    }
-    else if(req.method=="DELETE" && req.url=="/product"){
-        res.end("User Data is Deleted successfully");
-    }
-    else{
-        res.end("Invalid Path");
-    }
-
 
     
+    else if(req.method=="PATCH" && req.url == "/user"){
+        let body ="";
+        req.on("data",(chunk)=>{
+            body+=chunk; //store in second storage 
+        })
+        req.on("end",(chunk)=>{
+            const user = JSON.parse(body);// for convert into js object parse used 
+            const findUser = db.find((u)=>u.email == user.email);
+            Object.assign(findUser,user);
+        })
+        return res.end("User Data is PATCHED sucessfully")
+    }
+
+
+
+
+
+    else if(req.method=="PUT" && req.url == "/user"){
+        return res.end("User Data is PUT sucessfully")
+    }
+    else if(req.method=="DELETE" && req.url == "/user"){
+        return res.end("User Data is DELETED sucessfully")
+    }
+    else{
+        res.end("Invalid Route")
+    }
+    
 })
-
-
 server.listen(3000,()=>{
-    console.log("Server is lis listening at port 3000")
+    console.log("Server is Listening at 3000")
 })
