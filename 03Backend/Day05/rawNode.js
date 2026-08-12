@@ -4,12 +4,12 @@ const db = [
         "name":"Rohini",
         "age":32,
         "email":"roh@gamil.com",
-        "amount":23432
+        "amount":34
     },{
         "name":"Sujal",
         "age":30,
         "email":"sujal@gamil.com",
-        "amount":23432
+        "amount":243
     },{
         "name":"Sreelekha",
         "age":12,
@@ -20,6 +20,11 @@ const db = [
         "age":2,
         "email":"santosh@gamil.com",
         "amount":212
+    },{
+        "name":"chandan",
+        "age":23,
+        "email":"chandan32@gmail.com",
+        "amount":32464
     }
 ]
 
@@ -88,3 +93,17 @@ const server = http.createServer((req,res)=>{
 server.listen(3000,()=>{
     console.log("Server is Listening at 3000")
 })
+
+
+
+
+
+
+
+// Action           | Method | URL                        | What happens?                
+// View Users       | GET    | http://localhost:3000/user | Shows JSON data in           
+//                  |        |                            | browser.                     
+// Create User      | POST   | http://localhost:3000/user | Requires tool (Postman/curl).
+// Update (Partial) | PATCH  | http://localhost:3000/user | Requires tool (Postman/curl).
+// Update (Full)    | PUT    | http://localhost:3000/user | Requires tool (Postman/curl).
+// Delete User      | DELETE | http://localhost:3000/user | Requires tool (Postman/curl).

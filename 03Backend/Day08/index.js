@@ -1,83 +1,113 @@
-import express from "express"
-import fs from "fs"
-
+import express from 'express';
+import fs from 'fs'; //fs module read write in the file 
 const app = express();
+
+const DBPath = './database.txt'
+function readDB (){
+    const data = fs.readFileSync(DBPath,"utf-8"); //here "utf-8" is used for encoading whole data is aveialable in string format
+    return JSON.parse(data) ; //string data was return in the form of JSON
+}
+
+function writeDB (data){
+    //data is an array of object cinvert into IN JSON 
+    fs.writeFileSync(DBPath,JSON.stringify(data,null,2))
+}
+
+//frontend se jo data ayega usse pass kardiya jayega
 app.use(express.json());
-
-const DBPath = "./database.txt";
-
-
-function readDB(){
-   const data =  fs.readFileSync(DBPath, "utf-8");
-   // whole database data is available to you in string format: JSON
-   return JSON.parse(data);
-   //convert string into javascript object
-}
-
-function writeDB(data){
-    // data is an array of object
-    // convert it into JSON: String
-   fs.writeFileSync(DBPath, JSON.stringify(data,null,2));
-}
 
 
 app.get("/",(req,res)=>{
-    
-    res.send("Welcome to Home Page");
+    res.send("Wealcome To homepage");
 })
 
-// fetch customer detail using accountNumber
+//fetch coustumer 
 app.get("/user/:accountNumber",(req,res)=>{
-    
     const accountId = req.params.accountNumber;
-    const account = readDB();
-
-    const user = account.find((a)=> a.accountNumber == accountId);
-
+    const account = readDB();//in array form DATA
+    const user = account.find((a)=>a.accountNumber == accountId);
     res.json(user);
 })
 
-// account creation
+
+//account creation
 app.post("/user",(req,res)=>{
-   
     const user = req.body;
     const account = readDB();
-
     account.push(user);
     writeDB(account);
 
     res.json(user);
+
 })
 
 
-// delete user data
-
-app.delete("/user",(req,res)=>{
+//deete the user data
+app.delete("/user/",(req,res)=>{
     const accountId = req.body.accountNumber;
-
     const account = readDB();
-    const newAccount = account.filter((a)=> a.accountNumber!=accountId);
+    const newaccount = account.filter((a)=>a.accountNumber!=accountId);
+    //account ko filter out karrdo jo account ID se match nahi karrte 
 
-    writeDB(newAccount);
-    res.send("Information deleted succesfully");
+
+    writeDB(newaccount);
+    res.send("information deleted Sucessfully");
 })
 
-//balance update
+//balace update
 app.patch("/user",(req,res)=>{
     const balanceUpdate = req.body.balance;
     const accountId = req.body.accountNumber;
 
     const account = readDB();
-    const user = account.find((a)=> a.accountNumber == accountId);
+    const user = account.find((a)=>a.accountNumber == accountId);
     user.balance+=balanceUpdate;
 
     writeDB(account);
-    res.send("Balance Updated successfully");
+    res.send("balance Update Sucessfully");
 })
-
 
 
 
 app.listen(3000,()=>{
-    console.log("Server is listening at port 3000");
+    console.log("Hello man port listening at 3000")
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//testing on postman 
+//body -> JSON -> RAW
+// {
+//     "name": "Ankita Biswal",
+//     "accountNumber": "39852",
+//     "city": "Puri",
+//     "age": 20,
+//     "balance": 20000
+// }
+
+
+//for path 
+// http://localhost:3000/user
+// {
+//     "accountNumber": "3445",
+//     "balance": 10000
+//   }
+
+//For Delete account 
+// http://localhost:3000/user
+
+// {
+//     "accountNumber": "3445"
+//   }
+

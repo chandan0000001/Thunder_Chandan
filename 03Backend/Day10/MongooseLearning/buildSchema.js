@@ -1,47 +1,42 @@
-
 import mongoose from "mongoose";
-
-// name, accountNumber, city, age, balance, accountType
-
+//name , accountNumber , city , age , balance 
 const userSchema = new mongoose.Schema({
-   name:{
-    type: String,
-    minLength:3,
-    MaxLength: 20,
-    trim: true,
-    required: true
+   name:{type:String,
+      minLength:3,
+      maxLength:20,
+      trim: true,//age piche khali space ko  trim kardo 
+      require:true
    },
    accountNumber:{
-    type: Number,
-    required: true,
-    unique: true,
-    index: true,
+      type:Number,
+      require:true,
+      unique:true,
+      index:true //it create B+ tree and index used for seach faster 
    },
-   city:{
-        type: String,
-        minLength:3,
-        MaxLength: 20,
-        trim: true,
+   city:{type:String,
+      minLength:3,
+      maxLength:20,
+      trim: true,//age piche khali space ko  trim kardo 
    },
    age:{
-    type:Number,
-    min: 18,
-    max:100
+      type:Number,
+      min:18,
+      max:100
    },
    balance:{
-    type:Number,
-    min:0,
-    require: true
+      type:Number,
+      min:0,
+      require:true
    },
    accountType:{
-    type:String,
-    require: true,
-    enum: ["current","saving"],
-    default: "saving"
-   }
-},{timestamps:true});
+      type:String,
+      enum:["current","saving"],
+      default:"saving"
+   },
+
+},{timestamps:true})
 
 
-const Customer = mongoose.model("Customer",userSchema);
-// customers : collection build hojayega
+const Customer = mongoose.model("Customer",userSchema)
+//in database automaticly customer schema build hojayega 
 export default Customer;

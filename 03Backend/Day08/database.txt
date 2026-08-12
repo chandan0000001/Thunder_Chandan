@@ -1,16 +1,30 @@
 [
   {
-    "name": "Rohit Negi",
-    "accountNumber": "2324",
-    "city": "Kotdwar",
-    "age": 20,
-    "balance": 500
+    "name": "Chandan Kumar Dalai",
+    "accountNumber": "2334",
+    "city": "Bhubaneswar",
+    "age": 21,
+    "balance": 3243
   },
   {
-    "name": "Mohammad Negi",
-    "accountNumber": "1324",
-    "city": "Up",
-    "age": 10,
-    "balance": 1500
+    "name": "Danda Panigrahi",
+    "accountNumber": "13489",
+    "city": "Delhi",
+    "age": 32,
+    "balance": 3428
+  },
+  {
+    "name": "Ankita Biswal",
+    "accountNumber": "39852",
+    "city": "Puri",
+    "age": 20,
+    "balance": 20000
+  },
+  {
+    "name": "Dipsa Biswal",
+    "accountNumber": "3445",
+    "city": "Cuttack",
+    "age": 42,
+    "balance": 50000
   }
 ]
