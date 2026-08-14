@@ -48,7 +48,7 @@ app.get("/customer/filter" , async(req,res)=>{
 
 
 //for getting particular user information 
-// here use the ":" -> route para meter which apvcet everything 
+// here use the ":" -> route para meter which appcet everything 
 app.get("/customer/:accountNumber" , async(req,res)=>{
     const accNumber = req.params.accountNumber;
     const customer = await Customer.findOne({accountNumber:accNumber})
