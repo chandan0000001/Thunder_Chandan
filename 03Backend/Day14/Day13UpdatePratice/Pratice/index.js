@@ -15,8 +15,10 @@ app.use(cookieParser());
 app.post("/signup",async (req,res)=>{
     const {name,age,email,password} = req.body;
 
+
+    const hashPassword = await bcrypt.hash(password,10)
     const ux = await User.create({
-        name,age,email,password
+        name,age,email,password:hashPassword
     });
     
     //token bhejna padega 
@@ -56,7 +58,9 @@ app.get("/user",async(req,res)=>{
     if(u){
     res.json({
         message:"Your user detail",
-        data: u
+        name:u.name,
+        email:u.email,
+        age:u.age
     })
   }else{
     res.json({
@@ -73,7 +77,10 @@ app.post("/login" , async (req,res)=>{
     const u = await User.findOne({email:email});
 
     if(u){
-        if(password==u.password){
+
+        const isMatch = await bcrypt.compare(password,u.password)
+
+        if(isMatch){
             const token = jwt.sign({
                 //here the signature created
                 email:email,
