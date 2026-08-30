@@ -14,8 +14,6 @@ app.use(cookieParser());
 
 app.post("/signup",async (req,res)=>{
     const {name,age,email,password} = req.body;
-
-
     const hashPassword = await bcrypt.hash(password,10)
     const ux = await User.create({
         name,age,email,password:hashPassword
@@ -35,10 +33,13 @@ app.post("/signup",async (req,res)=>{
 
 //one is key and value //here we talk with browser 
 //Another things we can create random ID for those who are not login in websites
+// cookie name  = token
+// cookie value = JWT
    res.cookie("token",token,{
-    httpOnly:true,
+    httpOnly:true,//only browser can scess javascript cant touchit 
     secure:false, //agar true kiya https pe bhejega warna http pe bhi 
     maxAge:60*60*1000 //timer for browser token expire in 1 hour 
+    // 60 seconds × 60 minutes × 1000 milliseconds = 3,600,000 ms = 1 hour
    })
    res.status(202).json({
     message: "User profile is cretaed",
@@ -77,9 +78,7 @@ app.post("/login" , async (req,res)=>{
     const u = await User.findOne({email:email});
 
     if(u){
-
         const isMatch = await bcrypt.compare(password,u.password)
-
         if(isMatch){
             const token = jwt.sign({
                 //here the signature created
@@ -90,7 +89,6 @@ app.post("/login" , async (req,res)=>{
               "chandan@1010",
               {expiresIn:"1h"} //it enter token when create and expire date 
            );
-     
            res.cookie("token",token,{
             httpOnly:true,
             secure:false,  
@@ -103,7 +101,6 @@ app.post("/login" , async (req,res)=>{
             res.json({
                 message:"User not found"
             })
-
         }
     }else{
         res.json({

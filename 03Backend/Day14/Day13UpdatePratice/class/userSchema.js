@@ -25,6 +25,7 @@ const userSchema = new mongoose.Schema({
 
 
 const User = mongoose.model("User",userSchema)
+//"Mongoose, is userSchema ko use karke ek Model bana do jiska naam User hai."
 //in database automaticly customer schema build hojayega 
 export default User;
 
