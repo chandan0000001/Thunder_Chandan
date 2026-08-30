@@ -5,7 +5,7 @@ import cookieParser from "cookie-parser";
 import mongoose from "mongoose"
 import bcrypt from "bcrypt";
 
-await mongoose.connect("mongodb+srv://chandanzx1:chandanUserXYZ@cluster0.bpfqkoy.mongodb.net/LearnAuthday13")
+await mongoose.connect(process.env.MONGODB_URI)
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
