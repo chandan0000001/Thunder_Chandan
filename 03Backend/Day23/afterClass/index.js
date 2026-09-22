@@ -15,6 +15,12 @@ import {login,signup,profile,logout} from './controllers/userController.js';
 const app = express();
 
 
+//for testing user
+//rin this below in terminal
+// 10 -d 20 http://localhost:3000/users
+// app.use("/",(req,res)=>{
+//     res.json("Hello ji me nahii hu")
+// })
 
 app.use(express.json());
 app.use(cookieParser());
