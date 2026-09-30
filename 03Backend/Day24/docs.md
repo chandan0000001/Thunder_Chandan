@@ -47,6 +47,35 @@ Day 24 contains no code — it is the **hand-drawn lecture whiteboard** from cla
 
 **8. Sharding.** Convert the user input to a number (ASCII), take the **hash value mod 3** (3 databases, replicas ignored): the answer (1, 2, or 3) decides **which database** the signup data is stored in — and the same computation finds it on login. "Hurray, you fixed it. **This is called SHARDING.**"
 
+## How it works — first principles
+
+Start from the simplest possible system and let each failure force the next mechanism:
+
+1. **One database, many requests.** A disk is not memory — a read request goes to the OS **kernel**, which issues the actual I/O to the SSD via its API. While the kernel is busy serving one request, the next one waits; the CPU (dual core = 2 parallel calculations, octa core = 8) can't parallelize a single disk's serialized I/O. So concurrency is bounded by one machine → **add copies of the database (replicas)**.
+2. **Replicas fix reads, break writes.** Reads spread across replicas and get fast. But an update (`"chandan"` → `"ondan"`) now has to land on every copy — and replicas update at different moments, so concurrent writers can apply the same change "multiple times". → **Locking**: at one time, one task performs on that data; the backend locks whichever replica it reaches first so no other replica touches that particular record.
+3. **Locks need a coordinator.** If every replica decides on its own lock, replicas still diverge (and "in bad situations — some internet or random issue — replicas can't be updated, so there is a catch"). → **Master–Slave**: the master decides which replica is locked or not, and only confirms back to the user once a replica confirms its work. One source of truth for ordering.
+4. **The coordinator is a single point of failure.** "MASTER DB BOOM" → a node connected to the replicas is promoted to the **new master**; when the old master recovers, it rejoins **as a slave**. (This is exactly automatic failover / replica-set election.)
+5. **Storage runs out.** Full at 1000 GB → **vertical scaling** (a 10 TB machine) works, but only until you can't buy a bigger box. → **Horizontal scaling**: 3 databases, each holding 0→1 million users.
+6. **Horizontal scaling breaks lookup.** A login `{email, password}` must now be searched in **all** databases — "not found" in db1 and db2, "found" in db3. You can't keep adding databases because of cost. → **Sharding**: convert the key (email) to a number (ASCII), take `hash mod 3`; the result (1, 2, or 3) deterministically names the single database holding that user — both on signup and on login. "Search everywhere" becomes "compute once".
+
+Each step solves exactly the problem the previous step created — that is the whole history of database scaling in one drawing.
+
+## Flow (mermaid)
+
+```mermaid
+flowchart TD
+    A[5 concurrent requests] --> B[Single DATABASE + SSD]
+    B -->|kernel serializes disk I/O — slow| C[Add Replicas + RAM]
+    C -->|reads fast| D[Write inconsistency: same update repeated]
+    D --> E[LOCK: one task at a time on that data]
+    E -->|who coordinates the lock?| F[MASTER DB + SLAVE replicas]
+    F -->|edge case: MASTER DB BOOM| G[Replica promoted to new master<br/>old master returns as slave]
+    G --> H[DB full at 1000 GB]
+    H -->|vertical scale: 10 TB — has a ceiling| I[Horizontal scale: db1 / db2 / db3]
+    I -->|login must search ALL dbs| J[SHARDING: hash email mod 3]
+    J --> K[Answer 1, 2 or 3 names exactly one DB<br/>same computation on signup and login]
+```
+
 ## Key concepts
 
 - **Single-node bottleneck**: even with fast SSDs, one database serializes writes through the kernel; the fix is distributing load.

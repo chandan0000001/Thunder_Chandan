@@ -31,6 +31,7 @@ Day 14 upgrades Day 13's auth app by replacing plaintext password storage with *
     - `password`: `validator.isStrongPassword(value, {minLength:8, minLowercase:1, minUppercase:1, minNumbers:1, minSymbols:1})` — "Password must be strong".
   - All fields required + `timestamps:true`.
 - **index.js** — full auth cycle with bcrypt at **cost 11** on signup, `bcrypt.compare` on login, JWT with `name`, `email`, `age` claims signed with a secret, cookie named `tok`, and proper 404 responses for unknown users / wrong credentials.
+- **Known bug (left as-is in the notes)**: signup/login set the cookie under the name `tok`, but `GET /user` reads `req.cookies.token` — so on a real request the cookie comes back `undefined`, `jwt.verify(undefined, ...)` throws, and the route crashes with a 500. Fix: read `req.cookies.tok` (or name the cookie `token`). Day 13's `classs/` and `Pratice/` used the consistent name `token`.
 - **package.json** — Day 13 deps + `bcrypt` + `validator`.
 
 ## Code flow

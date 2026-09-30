@@ -4,6 +4,16 @@
 
 Day 07 contains no code — it is a hand-drawn **Excalidraw whiteboard** (`MongoDB Architecture.excalidraw.svg` / `.png`, plus a copy `l7.svg`) that works out *how MongoDB stores and searches data efficiently*. It starts with the naive idea of storing data in an Excel sheet, walks through sorted arrays → Binary Search Trees → AVL trees, and arrives at the **B-Tree/B+ tree** that MongoDB (via WiredTiger-style indexes) actually uses, explaining disk reads (4 KB pages), RAM buffering, and Big-O complexity of every data structure along the way.
 
+## Files
+
+| File | Purpose |
+|---|---|
+| `MongoDB Architecture.excalidraw.png` | The whiteboard export (raster) — the primary artifact of the day, shown below. |
+| `MongoDB Architecture.excalidraw.svg` | The same drawing as vector SVG (identical content, ~180 text labels). |
+| `l7.svg` | A duplicate copy of the Excalidraw SVG export under a different filename. |
+
+## The diagram
+
 ![MongoDB Architecture diagram](<MongoDB Architecture.excalidraw.png>)
 
 The same drawing in SVG form (identical content, vector format):
@@ -32,9 +42,21 @@ The same drawing in SVG form (identical content, vector format):
 
 7. **Why MongoDB at all** — conclusion: "So we need MongoDB for efficient data handle" — optimized storage + B-tree indexes for search, exact-match (hash) and range queries alike.
 
-## Code flow
+## How the code flows
 
 There is no code this day, so the "flow" is the conceptual read path the diagram teaches:
+
+## How it works — first principles
+
+- **The real constraint is the disk, not the CPU.** A CPU is astronomically faster than secondary storage, so the cost of a database lookup is dominated by *how many times you must read from disk*. Every data structure in the diagram is really an answer to "how do we minimize disk reads?"
+- **Start naive: an unsorted table (the Excel sheet).** Finding one email means scanning every row — O(n). Fine for hundreds of rows, hopeless for the 1 lakh+ rows a real app gets from the frontend.
+- **Sorting buys binary search but taxes writes.** A sorted array finds a key in O(log n), yet inserting or deleting means shifting up to every element — still O(n) writes. Real databases write constantly, so this trade doesn't hold.
+- **Trees fix writes but are pointer-heavy.** A BST degrades to a linked list (O(n)) if unbalanced; an AVL tree rebalances to guarantee O(log n) for search/insert/update/delete. But a binary tree with 1M nodes is ~20 levels deep — and each level could be a separate disk read, with nodes too small to fill a disk block.
+- **Hashing is perfect for exact match, useless for ranges.** Hash lookup is O(1), but a hash destroys ordering, so "ages 10–20" or "names starting with R" can't use it. Range queries need sorted keys.
+- **The B-Tree wins by making the tree wide and short.** One node holds up to *m* keys with *m+1* children, so height is log_base(m)(n). Size each node (~1 KB) to fit inside a 4 KB disk page and each level costs exactly one disk read — a 3-level tree finds any key in ~2–3 reads. Because keys stay sorted in the leaves, range queries walk the leaves in order: O(log n + k).
+- **RAM is the buffer.** Pages are pulled from secondary storage into RAM in chunks; the CPU compares keys in RAM and follows child pointers to request the next page. Data is durable on disk; hot pages live in RAM. That is the architecture MongoDB's indexes exploit.
+
+## Flow
 
 ```mermaid
 flowchart LR

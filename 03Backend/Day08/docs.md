@@ -4,7 +4,7 @@
 
 Day 08 answers the question "what does a database actually do for us?" by building a bank-account API where the "database" is a plain **`database.txt` file** read/written with Node's `fs` module. The Express server (`index.js`) implements full CRUD (get by account number, create, delete, update balance) over a JSON array persisted to disk — showing why manual file reads/writes on every request are clunky and setting up the motivation for MongoDB in Day 09+.
 
-## File-by-file explanation
+## Files
 
 | File | Purpose |
 |---|---|
@@ -12,7 +12,19 @@ Day 08 answers the question "what does a database actually do for us?" by buildi
 | `database.txt` | The fake database: a JSON array of 4 bank accounts (`name`, `accountNumber`, `city`, `age`, `balance`) — e.g. Chandan Kumar Dalai (Bhubaneswar), Danda Panigrahi (Delhi), Ankita Biswal (Puri), Dipsa Biswal (Cuttack). Mutated by the API on every POST/PATCH/DELETE. |
 | `package.json` | ES-module project (`"type": "module"`) with `express ^5.2.1`. No DB driver yet. |
 
-## Code flow
+## How the code flows
+
+Every route follows the same read-modify-write cycle because there is no database process holding state: `readDB()` parses the whole file into an array, the handler mutates that array in memory, and `writeDB()` serializes the entire array back to disk. `GET` only reads; `POST`/`DELETE`/`PATCH` must write before responding, otherwise the change is lost the moment the request ends.
+
+## How it works — first principles
+
+- **What a database really is**: durable storage plus a set of read/write operations. Strip away the branding and Day 08 builds one: `database.txt` is the storage engine, `readDB`/`writeDB` are the query layer, HTTP routes are the client API.
+- **Bytes → string → data.** A file is just bytes. `fs.readFileSync(path, "utf-8")` decodes them into a string; `JSON.parse` turns that string into a real array of objects you can `find`/`filter`/`push`; `JSON.stringify(data, null, 2)` reverses the trip (the `2` is indentation so the file stays human-readable). Forget `"utf-8"` and you get a Buffer instead of a string.
+- **Synchronous I/O in a request handler**: `readFileSync`/`writeFileSync` block the single Node event loop until the disk finishes. With one user it's instant; with ten concurrent requests they queue behind each other. Real databases are separate processes with internal buffering, caching and concurrency control for exactly this reason.
+- **Persistence changes everything**: unlike Day 06's in-memory array, restarting the server no longer wipes the data — the file survives. This is the one property that makes something a "database".
+- **Why this still isn't a database**: every change rewrites the whole file; two simultaneous writes can clobber each other (no atomicity/locking); scanning the array per request is O(n) (no indexes); nothing validates shape (no schemas). Those five gaps — atomicity, concurrency, indexing, validation, query language — are precisely what MongoDB is built to fill, which is Day 09's starting point.
+
+## Flow
 
 ```mermaid
 flowchart TD

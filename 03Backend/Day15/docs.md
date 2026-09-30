@@ -40,7 +40,8 @@ A whiteboard-style diagram titled "Project → Backend → ChatGPT". It lays out
 3. **Final design shown with realistic documents**:
    - User: `{_id:"user_123", name:"Aman", age:22, email, hashed password, usage:{tokenUsed:2500, tokenLimit:10000, resetAt, totalTokenUsed:52000}}`.
    - Chat: `{_id:"chat_456", userId, topic:"Recursion Doubt", model, summary, summaryUpdatedAt, summarizedTillMessageNumber:20, lastMessage, messageCount:28, usage:{...}}`.
-   - Message: `{_id:"msg_1", userId, chatId, role:"user", content:"Explain recursion", tokens:20}`.
+   - Message: `{_id:"msg_1", userId, chatId, role:"user", content:"Explain recursion", tokens:20}` (assistant turns also carry `usage:{promptTokens, completionTokens, totalTokens}`).
+4. **The summarisation strategy (Summary box)** — the whiteboard ends with the concrete prompt-building rule: per user, chats are tracked by `chatId` (ChatID 1, 2, 3, ...); once a chat grows (~10 chats / ~20 messages), don't resend the whole history — send **the last 10 messages + the running summary + the current message** as the LLM prompt. This is exactly what `Chat.summary` + `summarizedTillMessageNumber` implement.
 
 ## Code flow
 ```mermaid

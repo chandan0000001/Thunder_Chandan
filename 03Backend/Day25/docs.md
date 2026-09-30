@@ -38,6 +38,49 @@ Day 25 is another **hand-drawn Excalidraw lecture whiteboard** ("Lecture 23.exca
 
 **6. Certificate / TLS aside.** "Certified TLS — blocked because chandan.com is not valid certificate": the resolver table can return an IP, but the browser still validates the **TLS certificate** for the domain; a mismatched/invalid cert gets the site blocked even though DNS worked. ("but it does not show on your UI" — the block happens below the visible layer.)
 
+## How it works — first principles
+
+Why DNS exists at all: machines talk to **IP addresses**, humans remember **names**. Something has to translate one into the other, and it has to do it fast, on every request, for the whole internet. Each layer of the sketch is the cheapest fix for the previous layer's cost:
+
+1. **Names → IPs is a lookup, so cache it.** The closest cache is the **device itself**: if `coderarmy.in`'s IP is stored locally with a **TTL** ("remember IP for 1 hour"), zero network round trips are needed. The TTL exists because IPs change — caching forever would serve stale answers.
+2. **On a cache miss, ask a resolver.** The device forwards "coderarmy.in ?" to a **DNS resolver** — a public one like Google `8.8.8.8` or Cloudflare `1.1.1.1` (sketched alongside example answer IPs like `2.3.4.4`, `1.2.3.6`, `2.3.5.6`). The resolver does the recursive legwork so the device doesn't have to.
+3. **Nobody stores the whole internet, so delegate by suffix.** The resolver asks a hierarchy: the **root server** ("who handles `.in`?") → the **TLD server** for `.in` (also `.com`, `.en`, `.edu` are shown) → the **authoritative server**, which actually holds `coderarmy.in`'s record. The answer travels back: authority → resolver → device. This is a trie-like delegation: each level only knows who is responsible for the next suffix.
+4. **The answer lands in a DNS table** — rows of `domain name → IP` (`strikes.in → 12.3.4.5`, `chandan.com → 12.3.4.5`) — and is cached per the TTL from step 1, closing the loop.
+5. **The same choke point is also a censorship point.** Because your ISP's resolver sits on the path, it can simply refuse to answer for some domains ("supabase and mongoes are blocked" by jio/airtel/vi). Switching your resolver to Google or Cloudflare sidesteps the ISP's filter — the domain was never down, only that resolver's answer was.
+6. **A resolved IP still isn't a working site.** The browser then validates the **TLS certificate** for the domain; `chandan.com` with an invalid certificate gets **blocked** even though DNS answered correctly — and "it does not show on your UI", because the failure happens in the handshake layer below the page. DNS success ≠ usable site.
+
+## Flow (mermaid)
+
+```mermaid
+sequenceDiagram
+    participant U as User (coderarmy.in)
+    participant DC as Device cache
+    participant R as DNS resolver (8.8.8.8 / 1.1.1.1)
+    participant RT as Root server
+    participant TLD as TLD server (.in)
+    participant AU as Authoritative server
+    participant W as Web server (IP)
+
+    U->>DC: coderarmy.in ?
+    alt IP cached with TTL ("remember IP for 1 hour")
+        DC-->>U: IP from local cache (no network)
+    else cache miss ("cache does not store")
+        DC->>R: coderarmy.in ?
+        Note over R: ISP may block answers here<br/>(jio/airtel/vi) — public resolver bypasses it
+        R->>RT: who handles .in ?
+        RT-->>R: ask the .in TLD
+        R->>TLD: coderarmy.in ?
+        TLD-->>R: ask the authority server
+        R->>AU: coderarmy.in ?
+        AU-->>R: IP (DNS table: domain → IP)
+        R-->>DC: IP (cached with TTL)
+    end
+    DC-->>U: IP
+    U->>W: TLS handshake
+    Note over W: certificate invalid → blocked<br/>("does not show on your UI")
+    W-->>U: connection ok if cert valid
+```
+
 ## Key concepts
 
 - **DNS resolution order**: device cache (with TTL) → recursive resolver (Google/Cloudflare) → root server → TLD server → authoritative server → IP returned to the client.

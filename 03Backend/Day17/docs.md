@@ -101,7 +101,13 @@ flowchart TD
 | POST | /user/logout | logout | No | 200 (clears cookie) |
 | GET  | /user/profile | profile | **authUserMiddleware** | 200 / 404 / 500 |
 
-## Key Concepts
+## How it works — first principles
+- **Why hash passwords?** If the DB leaks, plaintext passwords leak with it. `bcrypt.hash(password, 12)` stores a one-way, salted hash; the cost factor 12 makes brute force slow by design. Verification uses `bcrypt.compare`, which hashes the candidate with the stored salt — never "decrypt" anything. Basic→advanced: plaintext → custom "encryption" (broken) → fast hashes like SHA-256 (too fast for GPUs) → purpose-built slow salts like bcrypt/argon2.
+- **Why tokens instead of server-side sessions?** Sessions need a server-side store (memory/Redis) shared across instances. A JWT is self-contained: the server signs `{id, email}` with `JWT_SECRET`, and any later request can be authenticated by verifying the signature alone. The cost: you can't trivially revoke it, which is why expiry (`expiresIn: "1h"`) matters.
+- **Why httpOnly cookies?** If the token lived in `localStorage`, any injected script (XSS) could steal it. An `httpOnly` cookie is invisible to JS and auto-sent by the browser on same-site requests — the browser does the token handling so client code never can.
+- **Why an auth *middleware* instead of checking the token inside each controller?** The verify-then-load-user sequence is identical for every protected route; copy-pasting it into each controller means each is one forgotten check away from a data leak. Express middleware is exactly this abstraction: a function `(req, res, next)` that runs *before* the handler, either short-circuits with a response (401/404/500) or enriches `req` (`req.user = existingUser`) and calls `next()`. Basic→advanced: check in handler → helper function → per-route middleware (`router.get("/profile", authUserMiddleware, profile)`) → router-wide `router.use(auth)` (Day 18).
+- **Why re-fetch the user from DB after verifying the token?** The signature proves "this token was issued by us for user X", not "user X still exists" — revocation/deletion needs the `User.findById(payload.id)` check. It also gives the handler a *fresh* document (name, usage) rather than stale claims.
+- **Why different status codes (400/401/409/201)?** They're the API's contract: 400 client sent bad input, 401 who-you-are failed, 409 conflict with existing state (duplicate email), 201 new resource created. Clients (and later, frontend error handling) branch on these rather than parsing messages.
 - **JWT in httpOnly cookies** vs localStorage — XSS-safer, automatically sent by the browser.
 - **Password hashing** with bcrypt (cost 12) and constant-time `bcrypt.compare`; never store or return plaintext.
 - **Auth middleware pattern**: verify token → load fresh user → `req.user` → `next()`. Reused across future routers.
